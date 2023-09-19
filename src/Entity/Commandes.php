@@ -29,6 +29,10 @@ class Commandes
     #[ORM\ManyToOne(inversedBy: 'fk_id_commandes')]
     private ?Contient $contient = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $fkIdUser = null;
+
 
 
 
@@ -94,6 +98,18 @@ class Commandes
     public function setContient(?Contient $contient): static
     {
         $this->contient = $contient;
+
+        return $this;
+    }
+
+    public function getFkIdUser(): ?User
+    {
+        return $this->fkIdUser;
+    }
+
+    public function setFkIdUser(?User $fkIdUser): static
+    {
+        $this->fkIdUser = $fkIdUser;
 
         return $this;
     }
