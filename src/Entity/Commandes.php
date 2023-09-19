@@ -22,16 +22,15 @@ class Commandes
     #[ORM\Column(length: 255)]
     private ?string $lieu_liv = null;
 
-    #[ORM\ManyToOne(inversedBy: 'commandes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Clients $fk_id_client = null;
-
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Etat $fk_id_etat = null;
 
     #[ORM\ManyToOne(inversedBy: 'fk_id_commandes')]
     private ?Contient $contient = null;
+
+
+
 
     public function getId(): ?int
     {
@@ -74,17 +73,6 @@ class Commandes
         return $this;
     }
 
-    public function getFkIdClient(): ?Clients
-    {
-        return $this->fk_id_client;
-    }
-
-    public function setFkIdClient(?Clients $fk_id_client): static
-    {
-        $this->fk_id_client = $fk_id_client;
-
-        return $this;
-    }
 
     public function getFkIdEtat(): ?Etat
     {
@@ -109,4 +97,5 @@ class Commandes
 
         return $this;
     }
+
 }
