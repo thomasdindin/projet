@@ -1,4 +1,41 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}{{filtre}}{% endblock %}
+
 {% block body %}
-    <h1>{{filtre}}</h1>
+<style>
+    ul {
+        list-style: none;
+    }
+
+    .marge {
+        margin-left:auto;
+    }
+
+</style>
+    {% for categorie in categories %}
+    <div class="container p-2">
+    <div class="d-flex align-items-center ">
+        <div><h2>{{categorie.catégories}}</h2></div>
+        <div class="marge"><button class="btn">Voir tout</button></div>
+    </div>
+
+        <hr class="hr">
+        <ul>
+            {% for produit in categorie.produits %}
+                <li>
+                    <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://picsum.photos/286/180" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{produit.nom}}</h5>
+                        <p class="card-text">{{produit.description}}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    {% endfor %}
+
 {% endblock %}
