@@ -34,6 +34,10 @@ class Produits
     #[ORM\ManyToOne(inversedBy: 'fk_id_produits')]
     private ?Stocke $stocke = null;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categories $fkIdCategorie = null;
+
 
     public function getId(): ?int
     {
@@ -120,6 +124,18 @@ class Produits
     public function setStocke(?Stocke $stocke): static
     {
         $this->stocke = $stocke;
+
+        return $this;
+    }
+
+    public function getFkIdCategorie(): ?Categories
+    {
+        return $this->fkIdCategorie;
+    }
+
+    public function setFkIdCategorie(?Categories $fkIdCategorie): static
+    {
+        $this->fkIdCategorie = $fkIdCategorie;
 
         return $this;
     }
