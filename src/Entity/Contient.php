@@ -31,8 +31,6 @@ class Contient
     #[ORM\Column]
     private ?int $quantite = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Adresse = null;
 
 
     public function __construct()
@@ -142,15 +140,4 @@ class Contient
         return $this;
     }
 
-    public function getAdresse(): ?string
-    {
-        return $this->Adresse;
-    }
-
-    public function setAdresse(?string $Adresse): static
-    {
-        $this->Adresse = $Adresse;
-
-        return $this;
-    }
 }
