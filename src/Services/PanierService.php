@@ -5,6 +5,9 @@ namespace App\Services;
 class PanierService
 {
 
+    //
+
+
 }
 
 ?>
