@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
 class Produits
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -37,6 +38,9 @@ class Produits
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categories $fkIdCategorie = null;
+
+    #[ORM\Column(length: 1)]
+    private ?string $sexe = null;
 
 
     public function getId(): ?int
@@ -136,6 +140,18 @@ class Produits
     public function setFkIdCategorie(?Categories $fkIdCategorie): static
     {
         $this->fkIdCategorie = $fkIdCategorie;
+
+        return $this;
+    }
+
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(string $sexe): static
+    {
+        $this->sexe = $sexe;
 
         return $this;
     }
