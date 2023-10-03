@@ -1,4 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+{% block stylesheet %}
+	<link rel="stylesheet" href="{{ asset('css/header.css') }}">
+{% endblock %}
+
+<nav class="navbar navbar-expand-lg bg-primary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">
 			<img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="100px">
@@ -9,9 +13,17 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 			<form class="d-flex" role="search">
-				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
+				<input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
+				<button class="btn btn-outline-warning" type="submit">Rechercher</button>
 			</form>
+			<ul class="d-flex flex-row">
+				<li>
+					<i class="fa-solid fa-bag-shopping text-light"></i>
+				</li>
+				<li>
+					<i class="fa-solid fa-circle-user text-light"></i>
+				</li>
+			</ul>
 		</div>
 	</div>
 </nav>
