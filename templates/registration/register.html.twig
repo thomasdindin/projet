@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscris toi !{% endblock %}
+{% block stylesheets %}
+  <style>
+      .form-design{
+          display: grid;
+          place-items: center;
+          color: #000;
+          font-family: Inter, serif;
+
+      }
+
+      .form-design input{
+          width: 250px;
+          height: 20px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          margin: 10px;
+          padding: 10px;
+      }
+      .form-design button{
+          width: 250px;
+          height: 40px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          margin: 10px;
+          padding: 10px;
+          background-color: #000;
+          color: white;
+          font-weight: bold;
+      }
+      .form-design button:hover{
+          background-color: #fff;
+          color: black;
+          border: 1px solid #000;
+      }
+  </style>
+{% endblock %}
+
+{% block header %}
+    <Header></Header>
+{% endblock %}
+{% block body %}
+    <div class="form-design">
+    <h1>Inscris toi ! </h1>
+
+
+
+    {{ form_errors(registrationForm) }}
+
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nom) }}
+    {{ form_row(registrationForm.prenom) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.adresse) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+
+    </div>
+{% endblock %}
