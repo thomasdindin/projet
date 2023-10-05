@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connecte toi ! {% endblock %}
+{% block stylesheets %}
+
+    <style>
+        .form-design{
+            display: grid;
+            place-items: center;
+            color: #000;
+            font-family: Inter, serif;
+        }
+        .form-design input{
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+        }
+        .form-design button{
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            background-color: #000;
+            color: white;
+            font-weight: bold;
+        }
+        .form-design button:hover{
+            background-color: #fff;
+            color: black;
+            border: 1px solid #000;
+        }
+        .text-form{
+            color: #000;
+            text-align: center;
+            font-family: Inter, serif;
+            font-size: 45px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+
+
+    </style>
+{% endblock %}
+{% block header %}
+    <Header>
+
+</Header> {% endblock %}
+
+
+
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <div class="form-design">
+    <h1 class="text-form">Connecte toi !</h1>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class= autocomplete="email" placeholder="Email" required autofocus>
+    <input type="password" name="password" id="inputPassword" class= autocomplete="current-password" placeholder="Mot de passe" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <button class= type="submit">
+        Se connecter
+    </button>
+        <a href="{{ path('app_register') }}">Nous rejoindre</a>
+        </div>
+</form>
+{% endblock %}

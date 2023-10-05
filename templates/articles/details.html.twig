@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block stylesheetsCarousel %}
+    <style>
+        /* Styles personnalisés pour le carrousel */
+        #carouselExampleIndicators {
+                width: 60%; /* Occupe 60% de la largeur de l'écran */
+                float: left; /* Aligner à gauche */
+                margin-right: 20px; /* Espacement à droite pour créer de la marge entre le carrousel et le contenu adjacent */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="product-container">
+        <div class="product-details">
+            <h2>{{produit.nom}}</h2>
+            <p>Description du produit : {{produit.description}}</p>
+            <p>Prix : {{produit.prix}}</p>
+            <form action="panier.php" method="POST">
+                <label for="size">Taille :</label>
+                <select id="size" name="size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+                <br>
+                <label for="quantity">Quantité :</label>
+                <select id="quantity" name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br>
+                <button type="button" class="btn btn-outline-success">Ajouter au panier</button>
+            </form>
+        </div>
+        {% include 'partials/_carousel.html.twig' %}
+    </div>
+
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-right;
+    margin: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    max-width: 600px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-details h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.product-details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.product-details label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.product-details select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.product-details button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.product-details button:hover {
+    background-color: #0056b3;
+}
+
+.product-image {
+    flex: 1;
+    text-align: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+{% endblock %}
