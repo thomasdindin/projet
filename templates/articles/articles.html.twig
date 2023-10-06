@@ -3,33 +3,52 @@
 {% block title %}Accueil
 {% endblock %}
 
+
 {% block body %}
+
+	<style>
+		.small {
+			height: 40px; /* Définir la hauteur en pixels */
+			max-height: 40px; /* Définir la hauteur maximale en pixels */
+			overflow: hidden; /* Cacher le contenu qui dépasse la hauteur maximale */
+			text-overflow: ellipsis; /* Ajouter des points de suspension (...) pour indiquer que du contenu est caché */
+			white-space: pre-line;
+		}
+
+		.row {
+			min-height:3rem;
+		}
+
+		.card {
+			transition: all 0.3s ease-in-out;
+		}
+
+		.card:hover {
+			transform: scale(1.05);
+		}
+		
+	</style>
+
+
 	{% for categorie in categories %}
 		<section>
 			<div class="container">
-				<div class="d-flex align-items-center flex-row">
-					<h2 class="mr-auto">{{categorie.catégories}}</h2>
-					<button class="btn">Voir tout</button>
+				<div class="row">
+					<div class="d-flex align-items-center flex-row">
+						<h2 class="mr-auto">{{categorie.catégories}}</h2>
+						<button class="btn">Voir tout</button>
+					</div>
+					<hr class="hr">
 				</div>
-
-				<hr class="hr">
-				<ul class="d-flex flex-row list-unstyled">
+				<div class="row gy-5">
 					{% for produit in categorie.produits %}
-						<li class="w-100 m-2">
-							<div class="col-sm-3 col-lg-2 w-100">
+						<div class="col-lg-3 col-md-6">
+							<a href="{{path('article_details', {'id': produit.id})}}" class="text-decoration-none">
 								<div class="card shadow">
 									<img src="https://picsum.photos/286/180" class="card-img-top" alt="Random"/>
 									<div class="card-body">
 										<h5 class="text-center fw-bold">{{produit.nom}}</h5>
-										<p class="text-muted small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-																																															Quos
-																																															quod
-																																															quibusdam cumque rem accusamus, aperiam excepturi unde, voluptate
-																																															quidem
-																																															ipsam
-																																															velit
-																																															quisquam vel voluptatibus, quae molestiae fugiat.
-										</p>
+										<p class="text-muted small">{{produit.description}}</p>
 										<hr>
 										<p class="text-dark mb-0 text-center">
 											<strong>{{produit.prix}}€</strong>
@@ -37,21 +56,17 @@
 
 										<div class="d-flex justify-content-between mb-2">
 											<p class="text-error mb-0 text-center">Plus que
-												<span class="fw-bold">6</span>
+												<span class="fw-bold">{{produit.stocke.quantite}}</span>
 												articles en stock !
 											</p>
 										</div>
 									</div>
 								</div>
-							</div>
-						</li>
+							</a>
+						</div>
 					{% endfor %}
-
-				</ul>
-				<a class="carousel-control-next" href="#myCarousel" data-slide="next">
-					<i class="fa fa-angle-right"></i>
-				</a>
+				</div>
 			</div>
-		{% endfor %}
-	</section>
-</section>{% endblock %}
+		</section>
+	{% endfor %}
+{% endblock %}
