@@ -2,7 +2,7 @@
 
 {% block title %}Connecte toi ! {% endblock %}
 {% block stylesheets %}
-
+    {{ parent() }}
     <style>
         .form-design{
             display: grid;
@@ -48,13 +48,6 @@
 
     </style>
 {% endblock %}
-{% block header %}
-    <Header>
-
-</Header> {% endblock %}
-
-
-
 
 {% block body %}
 <form method="post">

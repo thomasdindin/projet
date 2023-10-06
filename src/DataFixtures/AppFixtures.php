@@ -18,17 +18,24 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        // for ($i = 0; $i < 50; $i++) {
-        //     $produit = new Produits();
-        //     $produit->setNom("produit" . $i)
-        //         ->setDescription(array_rand(["Chaussure de sport", "Haut zumba", "Robe danse", "Pantalon rando"], 1))
-        //         ->setPrix(mt_rand(5, 300))
-        //         ->setTaille(array_rand(["XS", "S", "M", "L", "XL"], 1))
-        //         ->setSexe(array_rand(["H", "F", "E"]))
-        //         ->setImage("Image" . $i)
-        //         ->setFkIdCategorie(idCategorie(CategoriesRepository $categoriesRepository));
+        $categorie = new Categories();
+        $categorie->setCatégories("haut");
+        $categorieBas = new Categories();
+        $categorieBas->setCatégories("Bas");
+        $categorie = new Categories();
+        $categorie->setCatégories("haut");
+        for ($i = 0; $i < 50; $i++) {
+            $produit = new Produits();
+            $produit->setNom("produit" . $i)
+                ->setDescription(array_rand(["Chaussure de sport", "Haut zumba", "Robe danse", "Pantalon rando"], 1))
+                ->setPrix(mt_rand(5, 300))
+                ->setTaille(array_rand(["XS", "S", "M", "L", "XL"], 1))
+                ->setSexe(array_rand(["H", "F", "E"]))
+                ->setImage("Image" . $i)
+                ->setFkIdCategorie($categorie)
+                ->setSexe('H');
 
-        // }
+        }
 
         $manager->flush();
     }
