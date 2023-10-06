@@ -2,23 +2,23 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
+use App\Repository\RayonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CategoriesRepository::class)]
-class Categories
+#[ORM\Entity(repositoryClass: RayonRepository::class)]
+class Rayon
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 60)]
-    private ?string $catégories = null;
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkIdCategorie', targetEntity: Produits::class)]
+    #[ORM\OneToMany(mappedBy: 'rayonId', targetEntity: Produits::class)]
     private Collection $produits;
 
     public function __construct()
@@ -31,14 +31,14 @@ class Categories
         return $this->id;
     }
 
-    public function getCatégories(): ?string
+    public function getNom(): ?string
     {
-        return $this->catégories;
+        return $this->nom;
     }
 
-    public function setCatégories(string $catégories): static
+    public function setNom(string $nom): static
     {
-        $this->catégories = $catégories;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -55,7 +55,7 @@ class Categories
     {
         if (!$this->produits->contains($produit)) {
             $this->produits->add($produit);
-            $produit->setFkIdCategorie($this);
+            $produit->setRayonId($this);
         }
 
         return $this;
@@ -65,8 +65,8 @@ class Categories
     {
         if ($this->produits->removeElement($produit)) {
             // set the owning side to null (unless already changed)
-            if ($produit->getFkIdCategorie() === $this) {
-                $produit->setFkIdCategorie(null);
+            if ($produit->getRayonId() === $this) {
+                $produit->setRayonId(null);
             }
         }
 

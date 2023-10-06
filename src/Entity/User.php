@@ -37,11 +37,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 45)]
     private ?string $prenom = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkIdUser', targetEntity: Commandes::class)]
-    private Collection $commandes;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresse = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $pays = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $codePostal = null;
+
+    #[ORM\OneToMany(mappedBy: 'fkUserId', targetEntity: Commande::class)]
+    private Collection $commandes;
 
     public function __construct()
     {
@@ -142,35 +152,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commandes>
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commandes $commande): static
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
-            $commande->setFkIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commandes $commande): static
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getFkIdUser() === $this) {
-                $commande->setFkIdUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getAdresse(): ?string
     {
@@ -180,6 +161,72 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAdresse(?string $adresse): static
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(?string $pays): static
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(?int $codePostal): static
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setFkUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getFkUserId() === $this) {
+                $commande->setFkUserId(null);
+            }
+        }
 
         return $this;
     }
