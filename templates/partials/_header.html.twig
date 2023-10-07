@@ -1,48 +1,70 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary">
-  <!-- Container wrapper -->
-  <div class="container-fluid">
+<style>
+	input::placeholder {
+		text-align: right;
+	}
+	input {
+		text-align: right;
+	}
+</style>
 
-    <!-- Navbar brand -->
-    	<a class="navbar-brand" href="{{ path('app_articles') }}">
+<!-- Navbar -->
+<nav
+	class="navbar navbar-expand-lg bg-primary">
+	<!-- Container wrapper -->
+	<div
+		class="container-fluid">
+
+		<!-- Navbar brand -->
+		<a class="navbar-brand" href="{{ path('app_articles') }}">
 			<img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="100px">
 		</a>
 
-    <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
+		<!-- Toggle button -->
+		<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<i class="fas fa-bars"></i>
+		</button>
 
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div
+				class="navbar-nav mr-auto mb-2 mb-lg-0 mx-auto">
+				<!-- Search -->
+				<form class="w-auto flex-grow-1" action="" method="get">
+					<div class="position-relative">
+						<input type="search" class="form-control rounded-pill pl-10 w-100" placeholder="Rechercher..." aria-label="Rechercher..">
+						<i class="fas fa-search position-absolute" style="top: 50%; left: 10px; transform: translateY(-50%);"></i>
+					</div>
+				</form>
 
-      </ul>
 
-      <!-- Icons -->
-      <ul class="navbar-nav d-flex flex-row me-1">
-        <li class="nav-item me-3 me-lg-0">
-          <a href="{{ path('app_panier') }}" class="nav-link"><i class="fas fa-shopping-cart"></i></a>
-        </li>
-		{% if is_granted('ROLE_USER') %}
-        <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-        </li>
-		{% else %}
-		<li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="{{path('app_login')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
-        </li>
-		{% endif %}
+			</div>
 
-      </ul>
+			<!-- Icons -->
+			<ul class="navbar-nav d-flex flex-row me-1">
+				<li class="nav-item me-3 me-lg-0">
+					<a href="{{ path('app_panier') }}" class="nav-link">
+						<i class="fas fa-shopping-cart"></i>
+					</a>
+				</li>
+				{% if is_granted('ROLE_USER') %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="#">
+							<i class="fa-solid fa-user"></i>
+						</a>
+					</li>
+				{% else %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="{{path('app_login')}}">
+							<i class="fa-solid fa-right-to-bracket"></i>
+						</a>
+					</li>
+				{% endif %}
 
-      <!-- Search -->
-      <form class="w-auto">
-        <input type="search" class="form-control" placeholder="Type query" aria-label="Search">
-      </form>
+			</ul>
 
-    </div>
-  </div>
-  <!-- Container wrapper -->
+
+		</div>
+	</div>
+	<!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
