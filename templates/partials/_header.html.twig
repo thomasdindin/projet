@@ -1,167 +1,70 @@
-        {# <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-        <img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="100px">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Hommes
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Hauts</a></li>
-            <li><a class="dropdown-item" href="#">Bas</a></li>
-            <li><a class="dropdown-item" href="#">Chaussures</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Tout voir</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Femmes
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Hauts</a></li>
-            <li><a class="dropdown-item" href="#">Bas</a></li>
-            <li><a class="dropdown-item" href="#">Chaussures</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Tout voir</a></li>
-          </ul>
-        </li>
-
-                <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Enfants
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Hauts</a></li>
-            <li><a class="dropdown-item" href="#">Bas</a></li>
-            <li><a class="dropdown-item" href="#">Chaussures</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Tout voir</a></li>
-          </ul>
-        </li>
-        
-      </ul>
-      <div class="fa fa-shopping-cart">
-          <a href="{{ path('app_panier') }}">
-              <button type="button">
-                  {{ '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-                      <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-                  </svg>'|raw }}
-              </button>
-          </a>
-      </div>
-
-      <form class="d-flex" role="search" style="margin-top: 32px;">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-
-    </div>
-  </div>
-</nav> #}
-
-<div class="superNav border-bottom py-2 bg-light">
-    <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
-      <div class="collapse navbar-collapse justify-content-end">
-        <a class="navbar-brand" href="#">
-          <img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="100px">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                HOMMES
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Hauts</a></li>
-                <li><a class="dropdown-item" href="#">Bas</a></li>
-                <li><a class="dropdown-item" href="#">Chaussures</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Tout voir</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                FEMMES
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Hauts</a></li>
-                <li><a class="dropdown-item" href="#">Bas</a></li>
-                <li><a class="dropdown-item" href="#">Chaussures</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Tout voir</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ENFANTS
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Hauts</a></li>
-                <li><a class="dropdown-item" href="#">Bas</a></li>
-                <li><a class="dropdown-item" href="#">Chaussures</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Tout voir</a></li>
-              </ul>
-            </li>
-          </ul>
-            <div class="ms-auto d-none d-lg-block">
-              <form class="d-flex" role="search" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </div>
-          </div>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item" style="margin-right: 10px;">
-                  <a href="{{ path('app_panier') }}">
-                    <button type="button" class="btn btn-custom">
-                        {{ '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-                            <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-                        </svg>'|raw }}
-                    </button>
-                  </a>
-              </li>
-              <li class="nav-item" style="margin-right: 10px;">
-                  <a href="{{ path('app_panier') }}">
-                    <button type="button" class="btn btn-custom">
-                        {{ '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                        </svg>'|raw }}
-                    </button>
-                  </a>
-              </li>
-            </ul>
-
-
-        </div>
-      </div>
-    </nav>
 <style>
-    	a {
-      font-size:14px;
-      font-weight:700
-    }
-    .superNav {
-      font-size:13px;
-    }
-    .form-control {
-      outline:none !important;
-      box-shadow: none !important;
-    }
-    @media screen and (max-width:540px){
-      .centerOnMobile {
-        text-align:center
-      }
-    }
+	input::placeholder {
+		text-align: right;
+	}
+	input {
+		text-align: right;
+	}
 </style>
+
+<!-- Navbar -->
+<nav
+	class="navbar navbar-expand-lg bg-primary">
+	<!-- Container wrapper -->
+	<div
+		class="container-fluid">
+
+		<!-- Navbar brand -->
+		<a class="navbar-brand" href="{{ path('app_articles') }}">
+			<img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="100px">
+		</a>
+
+		<!-- Toggle button -->
+		<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<i class="fas fa-bars"></i>
+		</button>
+
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div
+				class="navbar-nav mr-auto mb-2 mb-lg-0 mx-auto">
+				<!-- Search -->
+				<form class="w-auto flex-grow-1" action="" method="get">
+					<div class="position-relative">
+						<input type="search" class="form-control rounded-pill pl-10 w-100" placeholder="Rechercher..." aria-label="Rechercher..">
+						<i class="fas fa-search position-absolute" style="top: 50%; left: 10px; transform: translateY(-50%);"></i>
+					</div>
+				</form>
+
+
+			</div>
+
+			<!-- Icons -->
+			<ul class="navbar-nav d-flex flex-row me-1">
+				<li class="nav-item me-3 me-lg-0">
+					<a href="{{ path('app_panier') }}" class="nav-link">
+						<i class="fas fa-shopping-cart"></i>
+					</a>
+				</li>
+				{% if is_granted('ROLE_USER') %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="#">
+							<i class="fa-solid fa-user"></i>
+						</a>
+					</li>
+				{% else %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="{{path('app_login')}}">
+							<i class="fa-solid fa-right-to-bracket"></i>
+						</a>
+					</li>
+				{% endif %}
+
+			</ul>
+
+
+		</div>
+	</div>
+	<!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

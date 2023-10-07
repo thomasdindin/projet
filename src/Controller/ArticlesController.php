@@ -10,12 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticlesController extends AbstractController
 {
-    #[Route('/articles', name: 'app_articles')]
-    public function index(ProduitsRepository $produits): Response
+    #[Route('/', name: 'app_articles')]
+    public function index(ProduitsRepository $produits, CategoriesRepository $categories): Response
     {
-        return $this->render('articles/index.html.twig', [
+        return $this->render('articles/articles.html.twig', [
             'controller_name' => 'Tous les articles',
             'produits' => $produits->findAll(),
+            'categories' => $categories->findAll()
         ]);
     }
 
