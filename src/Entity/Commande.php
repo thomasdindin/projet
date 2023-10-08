@@ -29,7 +29,7 @@ class Commande
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $fkUserId = null;
+    private ?User $fkUserId = null;
 
     #[ORM\OneToMany(mappedBy: 'fkCommandeId', targetEntity: Contenir::class)]
     private Collection $contenirs;
@@ -92,12 +92,12 @@ class Commande
         return $this;
     }
 
-    public function getFkUserId(): ?user
+    public function getFkUserId(): ?User
     {
         return $this->fkUserId;
     }
 
-    public function setFkUserId(?user $fkUserId): static
+    public function setFkUserId(?User $fkUserId): static
     {
         $this->fkUserId = $fkUserId;
 

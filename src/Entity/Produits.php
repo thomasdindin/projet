@@ -29,7 +29,7 @@ class Produits
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?rayon $rayonId = null;
+    private ?Rayon $rayonId = null;
 
     #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Stocker::class)]
     private Collection $stockers;
@@ -43,7 +43,6 @@ class Produits
 
     public function __construct()
     {
-        $this->fkRayonId = new ArrayCollection();
         $this->stockers = new ArrayCollection();
         $this->contenirs = new ArrayCollection();
         $this->existes = new ArrayCollection();
@@ -102,12 +101,12 @@ class Produits
         return $this;
     }
 
-    public function getRayonId(): ?rayon
+    public function getRayonId(): ?Rayon
     {
         return $this->rayonId;
     }
 
-    public function setRayonId(?rayon $rayonId): static
+    public function setRayonId(?Rayon $rayonId): static
     {
         $this->rayonId = $rayonId;
 

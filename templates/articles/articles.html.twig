@@ -81,18 +81,18 @@
 	</div>
 
 
-	{% for categorie in categories %}
+	{% for rayon in rayons %}
 		<section>
 			<div class="container">
 				<div class="row">
 					<div class="d-flex align-items-center flex-row">
-						<h2 class="mr-auto">{{categorie.catégories}}</h2>
+						<h2 class="mr-auto">{{rayon.nom}}</h2>
 						<button class="btn">Voir tout</button>
 					</div>
 					<hr class="hr">
 				</div>
 				<div class="row gy-5">
-					{% for produit in categorie.produits |slice(0,4) %}
+					{% for produit in rayon.produits |slice(0,4) %}
 						<div class="col-lg-3 col-md-6">
 							<a href="{{path('article_details', {'id': produit.id})}}" class="text-decoration-none">
 								<div class="card shadow">
@@ -107,7 +107,7 @@
 
 										<div class="d-flex justify-content-between mb-2">
 											<p class="text-error mb-0 text-center">Plus que
-												<span class="fw-bold">{{produit.stocke.quantite}}</span>
+												<span class="fw-bold">6</span>
 												articles en stock !
 											</p>
 										</div>

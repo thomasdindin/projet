@@ -5,6 +5,12 @@
 	input {
 		text-align: right;
 	}
+
+	.my-icons {
+		font-size: 1.5rem;
+		vertical-align: middle;
+	}
+
 </style>
 
 <!-- Navbar -->
@@ -42,20 +48,27 @@
 			<!-- Icons -->
 			<ul class="navbar-nav d-flex flex-row me-1">
 				<li class="nav-item me-3 me-lg-0">
-					<a href="{{ path('app_panier') }}" class="nav-link">
-						<i class="fas fa-shopping-cart"></i>
+					<a href="{{ path('app_panier') }}" class="nav-link d-flex flex-row align-items-center">
+					<p>Panier</p>
+						<i class="bi bi-bag-fill"></i>
 					</a>
 				</li>
 				{% if is_granted('ROLE_USER') %}
 					<li class="nav-item me-3 me-lg-0">
-						<a class="nav-link" href="#">
-							<i class="fa-solid fa-user"></i>
+						<a class="nav-link d-flex flex-row flex-wrap" href="#">
+						<p>
+							Profil
+						</p>
+							<i class="bi bi-person-circle"></i>
 						</a>
 					</li>
 				{% else %}
 					<li class="nav-item me-3 me-lg-0">
-						<a class="nav-link" href="{{path('app_login')}}">
-							<i class="fa-solid fa-right-to-bracket"></i>
+						<a class="nav-link d-flex flex-row align-items-center" href="{{path('app_login')}}">
+						<p>
+							Connexion
+						</p>
+							<i class="bi bi-box-arrow-in-right"></i>
 						</a>
 					</li>
 				{% endif %}
