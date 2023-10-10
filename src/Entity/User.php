@@ -183,4 +183,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function findOneBy(array $array)
+    {
+        // TODO: Implement findOneBy() method.
+    }
 }
