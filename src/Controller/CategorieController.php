@@ -15,9 +15,12 @@ class CategorieController extends AbstractController
         $rayon = $rayonRepository->find($id);
 
         $inRange = [];
-        $min = $_GET['min'] ?? 0;
-        $max = ($_GET['max'] ?? 100) ? null : 100 ;
-
+        // $min = $_GET['min'] ?? 0;
+        // $max = ($_GET['max'] ?? 100) ? null : 100 ;
+        if(isset($_GET['min'])) $min = $_GET['min'];
+        else $min = 0;
+        if(isset($_GET['max'])) $max = $_GET['max'];
+        else $max = 100;
         foreach ($rayon-> getProduits() as $produit) {
             if ($produit->getPrix() >= $min && $produit->getPrix() <= $max) {
                 $inRange[] = $produit;
@@ -27,7 +30,9 @@ class CategorieController extends AbstractController
         return $this->render('categorie/index.html.twig', [
             'controller_name' => 'CategorieController',
             'rayon' => $rayon,
-            'inRange' => $inRange
+            'inRange' => $inRange,
+            'min' => $min,
+            'max' => $max
         ]);
     }
 }
