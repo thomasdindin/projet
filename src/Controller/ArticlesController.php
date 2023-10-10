@@ -44,7 +44,9 @@ class ArticlesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $taille = $data['taille'];
+            var_dump($taille);
             $quantite = $data['quantite'];
+            var_dump($quantite);
             // $panierService->ajoutProduit($produit);
             // return $this->redirectToRoute('', [], Response::HTTP_SEE_OTHER);
         }

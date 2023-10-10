@@ -25,7 +25,7 @@ class ArticleType extends AbstractType
                     // Appliquer un style personnalisé au champ de sélection
                 ],
             ])
-            ->add('quantite', IntegerType::class, ['mapped' => false, 'label' => 'Quantité'])
+            ->add('quantite', IntegerType::class, ['label' => 'Quantité'])
             ->add('add', SubmitType::class, ['label' => 'Ajout Panier'])
             ->add('selectedSize', HiddenType::class);
     }
