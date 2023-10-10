@@ -17,8 +17,8 @@ class ProfilController extends AbstractController
         $id = $this->getUser()->getId();
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
-            'users' => $users ->findOneBy(['id' => $id]),
-
+            'users' => $users->findOneBy(['id' => $id]),
+            //$users[$id]
         ]);
 
 

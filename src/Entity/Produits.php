@@ -15,11 +15,12 @@ class Produits
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 10)]
+    private ?string $taille = null;
+
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 10)]
-    private ?string $taille = null;
 
     #[ORM\Column]
     private ?float $prix = null;
@@ -29,15 +30,15 @@ class Produits
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Rayon $rayonId = null;
+    private ?Rayon $rayon = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Stocker::class)]
+    #[ORM\OneToMany(mappedBy: 'fkProduit', targetEntity: Stocker::class)]
     private Collection $stockers;
 
-    #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Contenir::class)]
+    #[ORM\OneToMany(mappedBy: 'fkProduit', targetEntity: Contenir::class)]
     private Collection $contenirs;
 
-    #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Existe::class)]
+    #[ORM\OneToMany(mappedBy: 'fkProduit', targetEntity: Existe::class)]
     private Collection $existes;
 
 
@@ -103,12 +104,12 @@ class Produits
 
     public function getRayonId(): ?Rayon
     {
-        return $this->rayonId;
+        return $this->rayon;
     }
 
-    public function setRayonId(?Rayon $rayonId): static
+    public function setRayonId(?Rayon $rayon): static
     {
-        $this->rayonId = $rayonId;
+        $this->rayon = $rayon;
 
         return $this;
     }

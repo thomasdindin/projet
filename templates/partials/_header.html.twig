@@ -15,14 +15,14 @@
 
 <!-- Navbar -->
 <nav
-	class="navbar navbar-expand-lg bg-primary">
+	<div class="navbar navbar-expand-lg bg-danger">
 	<!-- Container wrapper -->
 	<div
 		class="container-fluid">
 
 		<!-- Navbar brand -->
 		<a class="navbar-brand" href="{{ path('app_articles') }}">
-			<img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="100px">
+			<img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="50px">
 		</a>
 
 		<!-- Toggle button -->
@@ -33,7 +33,7 @@
 		<!-- Collapsible wrapper -->
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<div
-				class="navbar-nav mr-auto mb-2 mb-lg-0 mx-auto">
+				class="navbar-nav mr-auto mb-1 mb-lg- mx-auto">
 				<!-- Search -->
 				<form class="w-auto flex-grow-1" action="" method="get">
 					<div class="position-relative">
@@ -49,16 +49,14 @@
 			<ul class="navbar-nav d-flex flex-row me-1">
 				<li class="nav-item me-3 me-lg-0">
 					<a href="{{ path('app_panier') }}" class="nav-link d-flex flex-row align-items-center">
-					<p>Panier</p>
+						<img src="{{ asset('images/caddie.png') }}" alt="panier" srcset="" height="20px">
 						<i class="bi bi-bag-fill"></i>
 					</a>
 				</li>
 				{% if is_granted('ROLE_USER') %}
 					<li class="nav-item me-3 me-lg-0">
-						<a class="nav-link d-flex flex-row flex-wrap" href="#">
-						<p>
-							Profil
-						</p>
+						<a class="nav-link d-flex flex-row flex-wrap" href="{{ path('app_profil') }}">
+							<img src="{{ asset('images/profil.png') }}" alt="profil" srcset="" height="20px">
 							<i class="bi bi-person-circle"></i>
 						</a>
 					</li>

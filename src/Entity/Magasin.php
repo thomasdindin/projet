@@ -24,7 +24,7 @@ class Magasin
     #[ORM\Column]
     private ?int $codePostal = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkMagasinId', targetEntity: Stocker::class)]
+    #[ORM\OneToMany(mappedBy: 'fkMagasin', targetEntity: Stocker::class)]
     private Collection $stockers;
 
     public function __construct()

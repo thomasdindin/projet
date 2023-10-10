@@ -29,9 +29,9 @@ class Commande
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $fkUserId = null;
+    private ?User $fkUser = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkCommandeId', targetEntity: Contenir::class)]
+    #[ORM\OneToMany(mappedBy: 'fkCommande', targetEntity: Contenir::class)]
     private Collection $contenirs;
 
     public function __construct()
@@ -94,12 +94,12 @@ class Commande
 
     public function getFkUserId(): ?User
     {
-        return $this->fkUserId;
+        return $this->fkUser;
     }
 
-    public function setFkUserId(?User $fkUserId): static
+    public function setFkUserId(?User $fkUser): static
     {
-        $this->fkUserId = $fkUserId;
+        $this->fkUser = $fkUser;
 
         return $this;
     }

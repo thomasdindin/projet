@@ -18,11 +18,11 @@ class Existe
 
     #[ORM\ManyToOne(inversedBy: 'existes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Produits $fkProduitId = null;
+    private ?Produits $fkProduit = null;
 
     #[ORM\ManyToOne(inversedBy: 'existes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Entrepot $fkEntrepotId = null;
+    private ?Entrepot $fkEntrepot = null;
 
     public function getId(): ?int
     {
@@ -43,24 +43,24 @@ class Existe
 
     public function getFkProduitId(): ?Produits
     {
-        return $this->fkProduitId;
+        return $this->fkProduit;
     }
 
-    public function setFkProduitId(?Produits $fkProduitId): static
+    public function setFkProduitId(?Produits $fkProduit): static
     {
-        $this->fkProduitId = $fkProduitId;
+        $this->fkProduit = $fkProduit;
 
         return $this;
     }
 
     public function getFkEntrepotId(): ?Entrepot
     {
-        return $this->fkEntrepotId;
+        return $this->fkEntrepot;
     }
 
-    public function setFkEntrepotId(?Entrepot $fkEntrepotId): static
+    public function setFkEntrepotId(?Entrepot $fkEntrepot): static
     {
-        $this->fkEntrepotId = $fkEntrepotId;
+        $this->fkEntrepot = $fkEntrepot;
 
         return $this;
     }

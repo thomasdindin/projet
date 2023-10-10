@@ -24,10 +24,10 @@ class Entrepot
     #[ORM\Column]
     private ?int $codePostal = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkEntrepotId', targetEntity: Contenir::class)]
+    #[ORM\OneToMany(mappedBy: 'fkEntrepot', targetEntity: Contenir::class)]
     private Collection $contenirs;
 
-    #[ORM\OneToMany(mappedBy: 'fkEntrepotId', targetEntity: Existe::class)]
+    #[ORM\OneToMany(mappedBy: 'fkEntrepot', targetEntity: Existe::class)]
     private Collection $existes;
 
     public function __construct()

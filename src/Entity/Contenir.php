@@ -24,15 +24,15 @@ class Contenir
 
     #[ORM\ManyToOne(inversedBy: 'contenirs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Produits $fkProduitId = null;
+    private ?Produits $fkProduit = null;
 
     #[ORM\ManyToOne(inversedBy: 'contenirs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Commande $fkCommandeId = null;
+    private ?Commande $fkCommande = null;
 
     #[ORM\ManyToOne(inversedBy: 'contenirs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Entrepot $fkEntrepotId = null;
+    private ?Entrepot $fkEntrepot = null;
 
     public function getId(): ?int
     {
@@ -77,36 +77,36 @@ class Contenir
 
     public function getFkProduitId(): ?Produits
     {
-        return $this->fkProduitId;
+        return $this->fkProduit;
     }
 
-    public function setFkProduitId(?Produits $fkProduitId): static
+    public function setFkProduitId(?Produits $fkProduit): static
     {
-        $this->fkProduitId = $fkProduitId;
+        $this->fkProduit = $fkProduit;
 
         return $this;
     }
 
     public function getFkCommandeId(): ?Commande
     {
-        return $this->fkCommandeId;
+        return $this->fkCommande;
     }
 
-    public function setFkCommandeId(?Commande $fkCommandeId): static
+    public function setFkCommandeId(?Commande $fkCommande): static
     {
-        $this->fkCommandeId = $fkCommandeId;
+        $this->fkCommande = $fkCommande;
 
         return $this;
     }
 
     public function getFkEntrepotId(): ?Entrepot
     {
-        return $this->fkEntrepotId;
+        return $this->fkEntrepot;
     }
 
-    public function setFkEntrepotId(?Entrepot $fkEntrepotId): static
+    public function setFkEntrepotId(?Entrepot $fkEntrepot): static
     {
-        $this->fkEntrepotId = $fkEntrepotId;
+        $this->fkEntrepot = $fkEntrepot;
 
         return $this;
     }

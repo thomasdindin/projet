@@ -10,19 +10,20 @@ class PanierService
 {
     private $session;
 
-    public function __construct(SessionInterface $session)
+    public function __construct()
     {
-        $this->$session = $session;
+        $this->session = session_id();
     }
+
 
     //fonction ajout produit au panier qui renvoie un objet de type produit et une quantité
 
-    public function ajoutProduit($produitId, $quantite, $TVA)
+    public function ajoutProduit(Produits $produit, $quantite)
     {
         $panier = $this->session->get('panier', []); // récupération du panier stocké dans la session sinon panier vide 
-        $panier[$produitId] = $quantite;
+        $panier[$produit] = $quantite;
         if (!isset($panier['TVA'])) {
-            $panier['TVA'] = $TVA;
+            $panier['TVA'] = 0.2;
         }
         $this->session->set('panier', $panier);
     }

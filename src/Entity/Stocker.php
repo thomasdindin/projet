@@ -18,11 +18,11 @@ class Stocker
 
     #[ORM\ManyToOne(inversedBy: 'stockers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Produits $fkProduitId = null;
+    private ?Produits $fkProduit = null;
 
     #[ORM\ManyToOne(inversedBy: 'stockers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Magasin $fkMagasinId = null;
+    private ?Magasin $fkMagasin = null;
 
     public function getId(): ?int
     {
@@ -43,24 +43,24 @@ class Stocker
 
     public function getFkProduitId(): ?Produits
     {
-        return $this->fkProduitId;
+        return $this->fkProduit;
     }
 
-    public function setFkProduitId(?Produits $fkProduitId): static
+    public function setFkProduitId(?Produits $fkProduit): static
     {
-        $this->fkProduitId = $fkProduitId;
+        $this->fkProduit = $fkProduit;
 
         return $this;
     }
 
     public function getFkMagasinId(): ?Magasin
     {
-        return $this->fkMagasinId;
+        return $this->fkMagasin;
     }
 
-    public function setFkMagasinId(?Magasin $fkMagasinId): static
+    public function setFkMagasinId(?Magasin $fkMagasin): static
     {
-        $this->fkMagasinId = $fkMagasinId;
+        $this->fkMagasin = $fkMagasin;
 
         return $this;
     }

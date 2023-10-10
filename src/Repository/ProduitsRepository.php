@@ -21,22 +21,18 @@ class ProduitsRepository extends ServiceEntityRepository
         parent::__construct($registry, Produits::class);
     }
 
-//    /**
-//     * @return Produits[] Returns an array of Produits objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Produits
+
+    public function taillesDisponible(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('DISTINCT(p.taille)') //retourne un tableau associatif
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    //    public function findOneBySomeField($value): ?Produits
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

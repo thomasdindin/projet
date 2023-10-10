@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrousel à gauche</title>
-    <!-- Inclure Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/5P5S5v0rWyBnjzV5fm3m7L4fuz9wJhs3eM5OJgkSf5x3A54Yxug5B6Q5H" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-8" style="width: 60%; height: 400px;"> <!-- Colonne occupant 60% de la largeur -->
-                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Slides du carrousel -->
-                    <div class="carousel-inner" style="height: 400px;">
-                        <div class="carousel-item active" >
-                            <img src="https://images.unsplash.com/photo-1614975059251-992f11792b9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3dlYXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" class="d-block w-100" alt="Image 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1614975059251-992f11792b9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3dlYXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" class="d-block w-100" alt="Image 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1614975059251-992f11792b9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3dlYXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" class="d-block w-100" alt="Image 3">
-                        </div>
-                    </div>
-                    <!-- Contrôles du carrousel -->
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Précédent</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Suivant</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4">
-                <!-- Contenu à droite du carrousel -->
-                <!-- Vous pouvez ajouter du contenu ici -->
-            </div>
-        </div>
-    </div>
+<style>
+.carousel .carousel-item {
+  height: 300px;
+}
 
-    <!-- Inclure Bootstrap JS (doit être inclus après jQuery) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js" integrity="sha384-bvE2pA0+FBTzI0K5Jw5f6pfeL2FpCW+HH6b1s8F5I5ZJ2MF5jFY2LCkF+PfjH7j1B" crossorigin="anonymous"></script>
-</body>
-</html>
+.carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
+</style>
+
+<div id="carouselExampleCaptions" class="carousel slide my-2 mx-2 p-3">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	</div>
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="https://media.istockphoto.com/id/1354175028/fr/photo/deux-amis-jouent-au-basket-ensemble-se-tenant-la-main-avant-le-départ-point-de-vue-aérien.jpg?s=612x612&w=0&k=20&c=WE0NHoX0LOpBp0fb6qP6mvvWKpLWZjJonvit0w6-mGc=" class="d-block w-100" alt="...">
+			<div class="carousel-caption d-none d-md-block">
+				<h5>First slide label</h5>
+				<p>Some representative placeholder content for the first slide.</p>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<img src="https://media.istockphoto.com/id/1445996378/fr/photo/femme-souriante-devant-un-mur-blanc-avec-tapis-et-bouteille-deau.webp?b=1&s=170667a&w=0&k=20&c=DTl7LG8Zywoam1VF0vCouxe721hFWknX9PJiQXmCqiM=" class="d-block w-100" alt="...">
+			<div class="carousel-caption d-none d-md-block">
+				<h5>Second slide label</h5>
+				<p>Some representative placeholder content for the second slide.</p>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<img src="https://media.istockphoto.com/id/1402134774/fr/photo/cycliste-de-route-professionnel-lors-dune-balade-dentraînement.webp?b=1&s=170667a&w=0&k=20&c=8EZe6cA2UXh_5PhmfqbEnoMcXkkKm8ZCyDc4ZfN4sMw=" class="d-block w-100" alt="...">
+			<div class="carousel-caption d-none d-md-block">
+				<h5>Third slide label</h5>
+				<p>Some representative placeholder content for the third slide.</p>
+			</div>
+		</div>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
+</div>
