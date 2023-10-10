@@ -50,7 +50,7 @@
 				<div class="row">
 					<div class="d-flex align-items-center flex-row">
 						<h2 class="mr-auto">{{rayon.nom}}</h2>
-						<button class="btn">Voir tout</button>
+						<a href="{{path('app_categorie', {'id': rayon.id, 'min': 0, 'max' : 100})}}">Voir tout</a>
 					</div>
 					<hr class="hr">
 				</div>

@@ -4,7 +4,58 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39795e69-cb65-4423-891e-3678be27ba8c" name="Changes" comment="" />
+    <list default="true" id="39795e69-cb65-4423-891e-3678be27ba8c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20231006123833.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/shop.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/sweat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Commande.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Contenir.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Existe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Magasin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Stocker.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AjoutPanierType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MagasinRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/RayonRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/UsersRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20230926125037.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20230926132448.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logov2.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logov2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticlesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Rayon.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commandes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Contient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Entrepot.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Entrepot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Etat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Stocke.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategoriesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CommandesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ContenirRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ContientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommandeRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EtatRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ExisteRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/StockeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StockerRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginControllerAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginControllerAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articles/articles.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/articles.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articles/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +72,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
     <include_path>
@@ -152,6 +206,9 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
     </include_path>
   </component>
   <component name="ProjectId" id="2VyFJSXNQbdpKPS5ooeA7nJKEei" />
@@ -164,11 +221,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -193,6 +252,11 @@
       <updated>1695800349322</updated>
       <workItem from="1695800362849" duration="74000" />
       <workItem from="1696335147986" duration="7913000" />
+      <workItem from="1696343943236" duration="1240000" />
+      <workItem from="1696408384778" duration="238000" />
+      <workItem from="1696573427088" duration="5749000" />
+      <workItem from="1696585998820" duration="83000" />
+      <workItem from="1696936575830" duration="864000" />
     </task>
     <servers />
   </component>
