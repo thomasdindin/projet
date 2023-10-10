@@ -1,72 +1,123 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{filtre}}{% endblock %}
+{% block title %}Accueil
+{% endblock %}
+
 
 {% block body %}
-<style>
-    ul {
-        list-style: none;
-    }
 
-    .marge {
-        margin-left:auto;
-    }
 
-</style>
-    {% for categorie in categories %}
-    <section>
-        <div class="container p-2">
-        <div class="d-flex align-items-center ">
-            <div><h2>{{categorie.catégories}}</h2></div>
-            <div class="marge"><button class="btn">Voir tout</button></div>
-        </div>
+	<style>
+		.small {
+			height: 40px; /* Définir la hauteur en pixels */
+			max-height: 40px; /* Définir la hauteur maximale en pixels */
+			overflow: hidden; /* Cacher le contenu qui dépasse la hauteur maximale */
+			text-overflow: ellipsis; /* Ajouter des points de suspension (...) pour indiquer que du contenu est caché */
+			white-space: pre-line;
+		}
 
-            <hr class="hr">
-                        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-            <ul>
-                {% for produit in categorie.produits %}
-                        <div class="container py-5">
-    <div class="row">
-      <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-        <div class="card">
-          <img src="https://picsum.photos/286/180"
-            class="card-img-top" alt="Random" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">{{categorie.catégories}}</a></p>
-              <p class="small text-danger"><s>{{produit.prix}}€</s></p>
-            </div>
+		.row {
+			min-height: 3rem;
+		}
 
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">{{produit.nom}}</h5>
-              <h5 class="text-dark mb-0">{{produit.prix}}€</h5>
-            </div>
+		.card {
+			transition: all 0.3s ease-in-out;
+		}
 
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p>
-              <div class="ms-auto text-warning">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-                {% endfor %}
+		.card:hover {
+			transform: scale(1.05);
+		}
 
-            </ul>
-                        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-        </div>
-        {% endfor %}
-    </section>
-</section>
+		.carousel .carousel-item {
+  height: 300px;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
+	</style>
+
+	<div id="carouselExampleCaptions" class="carousel slide my-2 mx-2 p-3">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="https://media.istockphoto.com/id/1354175028/fr/photo/deux-amis-jouent-au-basket-ensemble-se-tenant-la-main-avant-le-d%C3%A9part-point-de-vue-a%C3%A9rien.jpg?s=612x612&w=0&k=20&c=WE0NHoX0LOpBp0fb6qP6mvvWKpLWZjJonvit0w6-mGc=" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>First slide label</h5>
+					<p>Some representative placeholder content for the first slide.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="https://media.istockphoto.com/id/1445996378/fr/photo/femme-souriante-devant-un-mur-blanc-avec-tapis-et-bouteille-deau.webp?b=1&s=170667a&w=0&k=20&c=DTl7LG8Zywoam1VF0vCouxe721hFWknX9PJiQXmCqiM=" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Second slide label</h5>
+					<p>Some representative placeholder content for the second slide.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="https://media.istockphoto.com/id/1402134774/fr/photo/cycliste-de-route-professionnel-lors-dune-balade-dentra%C3%AEnement.webp?b=1&s=170667a&w=0&k=20&c=8EZe6cA2UXh_5PhmfqbEnoMcXkkKm8ZCyDc4ZfN4sMw=" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Third slide label</h5>
+					<p>Some representative placeholder content for the third slide.</p>
+				</div>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+
+	{% for rayon in rayons %}
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="d-flex align-items-center flex-row">
+						<h2 class="mr-auto">{{rayon.nom}}</h2>
+						<button class="btn">Voir tout</button>
+					</div>
+					<hr class="hr">
+				</div>
+				<div class="row gy-5">
+					{% for produit in rayon.produits |slice(0,4) %}
+						<div class="col-lg-3 col-md-6">
+							<a href="{{path('article_details', {'id': produit.id})}}" class="text-decoration-none">
+								<div class="card shadow">
+									<img src="https://picsum.photos/286/180" class="card-img-top" alt="Random"/>
+									<div class="card-body">
+										<h5 class="text-center fw-bold">{{produit.nom}}</h5>
+										<p class="text-muted small">{{produit.description}}</p>
+										<hr>
+										<p class="text-dark mb-0 text-center">
+											<strong>{{produit.prix}}€</strong>
+										</p>
+
+										<div class="d-flex justify-content-between mb-2">
+											<p class="text-error mb-0 text-center">Plus que
+												<span class="fw-bold">6</span>
+												articles en stock !
+											</p>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+	{% endfor %}
 {% endblock %}

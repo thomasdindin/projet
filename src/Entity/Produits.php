@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\ProduitsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
 class Produits
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -17,31 +18,35 @@ class Produits
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
+    #[ORM\Column(length: 10)]
+    private ?string $taille = null;
 
     #[ORM\Column]
     private ?float $prix = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
-    #[ORM\Column(length: 20)]
-    private ?string $taille = null;
-
-    #[ORM\ManyToOne(inversedBy: 'fk_id_produits')]
-    private ?Contient $contient = null;
-
-    #[ORM\ManyToOne(inversedBy: 'fk_id_produits')]
-    private ?Stocke $stocke = null;
+    private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Categories $fkIdCategorie = null;
+    private ?Rayon $rayonId = null;
 
-    #[ORM\Column(length: 1)]
-    private ?string $sexe = null;
+    #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Stocker::class)]
+    private Collection $stockers;
 
+    #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Contenir::class)]
+    private Collection $contenirs;
+
+    #[ORM\OneToMany(mappedBy: 'fkProduitId', targetEntity: Existe::class)]
+    private Collection $existes;
+
+
+    public function __construct()
+    {
+        $this->stockers = new ArrayCollection();
+        $this->contenirs = new ArrayCollection();
+        $this->existes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,14 +65,14 @@ class Produits
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getTaille(): ?string
     {
-        return $this->description;
+        return $this->taille;
     }
 
-    public function setDescription(string $description): static
+    public function setTaille(string $taille): static
     {
-        $this->description = $description;
+        $this->taille = $taille;
 
         return $this;
     }
@@ -84,74 +89,116 @@ class Produits
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getDescription(): ?string
     {
-        return $this->image;
+        return $this->description;
     }
 
-    public function setImage(string $image): static
+    public function setDescription(string $description): static
     {
-        $this->image = $image;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getTaille(): ?string
+    public function getRayonId(): ?Rayon
     {
-        return $this->taille;
+        return $this->rayonId;
     }
 
-    public function setTaille(string $taille): static
+    public function setRayonId(?Rayon $rayonId): static
     {
-        $this->taille = $taille;
+        $this->rayonId = $rayonId;
 
         return $this;
     }
 
-    public function getContient(): ?Contient
+    /**
+     * @return Collection<int, Stocker>
+     */
+    public function getStockers(): Collection
     {
-        return $this->contient;
+        return $this->stockers;
     }
 
-    public function setContient(?Contient $contient): static
+    public function addStocker(Stocker $stocker): static
     {
-        $this->contient = $contient;
+        if (!$this->stockers->contains($stocker)) {
+            $this->stockers->add($stocker);
+            $stocker->setFkProduitId($this);
+        }
 
         return $this;
     }
 
-    public function getStocke(): ?Stocke
+    public function removeStocker(Stocker $stocker): static
     {
-        return $this->stocke;
-    }
-
-    public function setStocke(?Stocke $stocke): static
-    {
-        $this->stocke = $stocke;
+        if ($this->stockers->removeElement($stocker)) {
+            // set the owning side to null (unless already changed)
+            if ($stocker->getFkProduitId() === $this) {
+                $stocker->setFkProduitId(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getFkIdCategorie(): ?Categories
+    /**
+     * @return Collection<int, Contenir>
+     */
+    public function getContenirs(): Collection
     {
-        return $this->fkIdCategorie;
+        return $this->contenirs;
     }
 
-    public function setFkIdCategorie(?Categories $fkIdCategorie): static
+    public function addContenir(Contenir $contenir): static
     {
-        $this->fkIdCategorie = $fkIdCategorie;
+        if (!$this->contenirs->contains($contenir)) {
+            $this->contenirs->add($contenir);
+            $contenir->setFkProduitId($this);
+        }
 
         return $this;
     }
 
-    public function getSexe(): ?string
+    public function removeContenir(Contenir $contenir): static
     {
-        return $this->sexe;
+        if ($this->contenirs->removeElement($contenir)) {
+            // set the owning side to null (unless already changed)
+            if ($contenir->getFkProduitId() === $this) {
+                $contenir->setFkProduitId(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setSexe(string $sexe): static
+    /**
+     * @return Collection<int, Existe>
+     */
+    public function getExistes(): Collection
     {
-        $this->sexe = $sexe;
+        return $this->existes;
+    }
+
+    public function addExiste(Existe $existe): static
+    {
+        if (!$this->existes->contains($existe)) {
+            $this->existes->add($existe);
+            $existe->setFkProduitId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExiste(Existe $existe): static
+    {
+        if ($this->existes->removeElement($existe)) {
+            // set the owning side to null (unless already changed)
+            if ($existe->getFkProduitId() === $this) {
+                $existe->setFkProduitId(null);
+            }
+        }
 
         return $this;
     }
