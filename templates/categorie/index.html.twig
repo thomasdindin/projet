@@ -55,7 +55,9 @@
 		<div class="row w-100">
 
 			<aside class="col-md-3 d-none d-md-block ">
-				<h2 class="text-align-center">Filtres</h2>
+				<div class="d-flex flex-row align-items-center">
+					<h2 class="text-align-center">Filtres</h2>
+				</div>
 				<hr>
 				<div class="container">
 					<form action="" method="get" class="form-design">
@@ -96,11 +98,34 @@
 								{% for ray in allRayons %}
 									<div class="row">
 										<label for="{{ray.nom}}">
-											<input type="checkbox" id="{{ray.nom}}" name="categories" value="{{ray.nom}}" {% if ray.id == rayon.id %} checked {% endif %}/>
+											<input type="checkbox" id="{{ray.nom}}" name="categories[]" value="{{ray.nom}}" {% if ray.nom in checkedCategories %} checked {% endif %}/>
 											{{ray.nom}}
 										</label>
 									</div>
 								{% endfor %}
+							</div>
+						</div>
+
+						<div class="row">
+							<button class="btn" type="button" data-toggle="collapse" data-target="#collapseSortCategorie" aria-expanded="false" aria-controls="collapseSortCategorie">
+								Trier par
+							</button>
+							<hr>
+							<div class="collapse" id="collapseSortCategorie">
+								<label>
+									<input type="radio" name="sort" value="asc">
+									Prix croissant
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="sort" value="desc">
+									Prix décroissant
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="sort" value="default" checked>
+									Par défaut
+								</label>
 							</div>
 						</div>
 						<button class="apply" type="submit">Appliquer les filtre</button>
@@ -112,7 +137,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="d-flex align-items-center flex-row">
-							<h2 class="mr-auto">{{rayon.nom}}</h2>
+							<h2 class="mr-auto">{% for cat in checkedCategories %} {{cat}}, {% endfor %} ({{inRange | length}})</h2>
 						</div>
 						<hr class="hr">
 					</div>
@@ -127,7 +152,8 @@
 											<p class="text-muted small">{{produit.description}}</p>
 											<hr>
 											<p class="text-dark mb-0 text-center">
-												<strong>{{produit.prix}} €</strong>
+												<strong>{{produit.prix}}
+													€</strong>
 											</p>
 
 											<div class="d-flex justify-content-between mb-2">
@@ -146,5 +172,4 @@
 			</main>
 		</div>
 	</section>
-
 {% endblock %}
