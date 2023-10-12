@@ -17,6 +17,9 @@ class ProfilType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('adresse')
+            ->add('ville')
+            ->add('codePostal')
+            ->add('pays')
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'save'],
             ]);
