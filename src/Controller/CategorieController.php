@@ -13,6 +13,7 @@ class CategorieController extends AbstractController
     public function index(int $id, RayonRepository $rayonRepository): Response
     {
         $rayon = $rayonRepository->find($id);
+        $allRayon = $rayonRepository->findAll();
 
         $inRange = [];
         // $min = $_GET['min'] ?? 0;
@@ -30,6 +31,7 @@ class CategorieController extends AbstractController
         return $this->render('categorie/index.html.twig', [
             'controller_name' => 'CategorieController',
             'rayon' => $rayon,
+            'allRayons' => $allRayon,
             'inRange' => $inRange,
             'min' => $min,
             'max' => $max
