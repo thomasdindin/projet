@@ -12,6 +12,7 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 class ProfilController extends AbstractController
@@ -23,6 +24,9 @@ class ProfilController extends AbstractController
         $this->manager = $manager;
     }
 
+
+
+    #[IsGranted('ROLE_USER')]
     #[Route('/profil', name: 'app_profil')]
     public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
