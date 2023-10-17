@@ -18,6 +18,7 @@ class ProduitService
 
     public function produitMagasins(Produits $produit): array
     {
+        $nbArticlesMagasin = [];
         $produitDansMagasin = $produit->getStockers();
         foreach ($produitDansMagasin as $stock) {
             $magasin = $stock->getFkMagasinId();
