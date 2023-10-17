@@ -60,6 +60,10 @@
 				</div>
 				<hr>
 				<div class="container">
+
+					<div class="mb-3">
+						<input type="text" id="search-input" class="form-control" placeholder="Rechercher...">
+					</div>
 					<form action="" method="get" class="form-design">
 						<div class="row">
 							<button class="btn" type="button" data-toggle="collapse" data-target="#collapseFiltrePrix" aria-expanded="false" aria-controls="collapseFiltrePrix">
@@ -137,13 +141,18 @@
 				<div class="container">
 					<div class="row">
 						<div class="d-flex align-items-center flex-row">
-							<h2 class="mr-auto">{% for cat in checkedCategories %} {{cat}}, {% endfor %} ({{inRange | length}})</h2>
+							<h2 class="mr-auto">
+								{% for cat in checkedCategories %}
+									{{cat}},
+								{% endfor %}
+
+								<p id="count-selected-items">({{inRange | length}})</p></h2>
 						</div>
 						<hr class="hr">
 					</div>
 					<div class="row gy-5">
 						{% for produit in inRange %}
-							<div class="col-lg-3 col-md-6">
+							<div class="col-lg-3 col-md-6 card-container">
 								<a href="{{path('article_details', {'id': produit.id})}}" class="text-decoration-none">
 									<div class="card shadow">
 										<img src="https://picsum.photos/286/180" class="card-img-top" alt="Random"/>
@@ -172,4 +181,32 @@
 			</main>
 		</div>
 	</section>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#search-input').on('input', function () {
+            var query = $(this).val().toLowerCase();
+
+            // Parcourez chaque élément de la liste d'articles
+            $('.col-lg-3.col-md-6').each(function () {
+                var productName = $(this).find('.fw-bold').text().toLowerCase();
+
+                // Vérifiez si le nom de l'article correspond à la recherche
+                if (productName.includes(query)) {
+                    $(this).removeClass('d-none'); // Affichez l'article
+                } else {
+                    $(this).addClass('d-none'); // Masquez l'article
+                }
+            });
+
+			// Comptez le nombre d'éléments visibles
+            var countVisibleItems = $('.col-lg-3.col-md-6:not(.d-none)').length;
+
+            // Affichez le nombre d'éléments sélectionnés où vous le souhaitez sur la page
+            let countSelectedItems = document.querySelector('#count-selected-items');
+			countSelectedItems.innerHTML = '(' + countVisibleItems + ')';
+        });
+    });
+</script>
 {% endblock %}

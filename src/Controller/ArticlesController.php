@@ -16,12 +16,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #[Route('/', name: 'app_articles')]
-    public function index(ProduitsRepository $produits, RayonRepository $rayons): Response
+    public function index(ProduitsRepository $produits, RayonRepository $rayons,  ProduitService $produitService): Response
     {
+
+        $research = $_GET['research'] ?? null;
+        $articles = $produits->findAll();
+        $categories = $rayons->findAll();
+
+        if ($research) {
+            $articles = $produits->findBy(['nom' => $research, 'description' => $research]);
+            $categories = $rayons->findByResearch($research);
+        }
+
+        $articles_qte = []; // Tableau associatif
+
+        foreach ($articles as $art) {
+            $quantite = $produitService->quantiteEntrepot($art);
+            $articles_qte[$art->getId()] = $quantite;
+        }
+
         return $this->render('articles/articles.html.twig', [
             'controller_name' => 'Tous les articles',
-            'produits' => $produits->findAll(),
-            'rayons' => $rayons->findAll()
+            'produits' => $articles,
+            'rayons' => $categories,
+            'articles_qte' => $articles_qte
         ]);
     }
 
@@ -59,19 +77,6 @@ class ArticlesController extends AbstractController
             'produit' => $produit,
             'maxQuantite' => $quantiteDansEntrepot,
             'ArticlesMagasins' => $nbArticlesMagasin,
-        ]);
-    }
-
-
-
-    #[Route('/articles/{filtre}', name: 'app_articles_filtre')]
-    public function showArticleFiltre(string $filtre, RayonRepository $rayons, ProduitsRepository $produits): Response
-    {
-        return $this->render('articles/articles.html.twig', [
-            'controller_name' => 'ArticlesControlle',
-            'filtre' => $filtre,
-            'rayons' => $rayons->findAll(),
-            'produits' => $produits->findAll()
         ]);
     }
 }

@@ -43,7 +43,6 @@
 
 	{% include 'partials/_carousel.html.twig' %}
 
-
 	{% for rayon in rayons %}
 		<section>
 			<div class="container">
@@ -69,8 +68,8 @@
 										</p>
 
 										<div class="d-flex justify-content-between mb-2">
-											<p class="text-error mb-0 text-center">Plus que
-												<span class="fw-bold">6</span>
+											<p class="text-error mb-0 text-center w-100">Plus que
+												<span class="fw-bold">{{articles_qte[produit.id]}}</span>
 												articles en stock !
 											</p>
 										</div>
