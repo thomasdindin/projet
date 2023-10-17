@@ -1,13 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil{% endblock %}
+{% block title %}Inscris toi !{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-design {
+            color: #000;
+            font-family: Inter, serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 30px;
+        }
+
+        .form-design input {
+            width: 250px;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-design button {
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #000;
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .form-design button:hover {
+            background-color: #fff;
+            color: black;
+            border: 1px solid #000;
+        }
+
+        .form-row {
+            margin: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-design label {
+            margin-right: 10px;
+            margin-bottom: 3px;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
+    <div class="form-design">
+        <h1 class="form-title">Profil</h1>
 
+        {{ form_errors(form) }}
 
-    <div class="example-wrapper">
-        <h1>Profil<h1>
-                {{ form(form) }}
+        {{ form_start(form) }}
+        <div class="form-row">{{ form_row(form.nom) }}</div>
+        <div class="form-row">{{ form_row(form.prenom) }}</div>
+        <div class="form-row">{{ form_row(form.email) }}</div>
+        <div class="form-row">{{ form_row(form.adresse) }}</div>
+        <div class="form-row">{{ form_row(form.ville) }}</div>
+        <div class="form-row">{{ form_row(form.pays) }}</div>
+        <div class="form-row">{{ form_row(form.codePostal) }}</div>
+
+        {{ form_end(form) }}
     </div>
-
 {% endblock %}
