@@ -15,12 +15,11 @@ class Produits
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 10)]
-    private ?string $taille = null;
+    // #[ORM\Column(length: 10)]
+    // private ?string $taille = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
-
 
     #[ORM\Column]
     private ?float $prix = null;
@@ -66,17 +65,17 @@ class Produits
         return $this;
     }
 
-    public function getTaille(): ?string
-    {
-        return $this->taille;
-    }
+    // public function getTaille(): ?string
+    // {
+    //     return $this->taille;
+    // }
 
-    public function setTaille(string $taille): static
-    {
-        $this->taille = $taille;
+    // public function setTaille(string $taille): static
+    // {
+    //     $this->taille = $taille;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPrix(): ?float
     {

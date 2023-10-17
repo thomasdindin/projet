@@ -8,30 +8,21 @@ use App\Repository\ProduitsRepository;
 
 class PanierService
 {
-    private $session;
-
-    public function __construct()
-    {
-        $this->session = session_id();
-    }
-
-
     //fonction ajout produit au panier qui renvoie un objet de type produit et une quantité
 
-    public function ajoutProduit(Produits $produit, $quantite)
+    public function ajoutProduit($id, $quantite, $session)
     {
-        $panier = $this->session->get('panier', []); // récupération du panier stocké dans la session sinon panier vide 
-        $panier[$produit] = $quantite;
+        $panier = $session->get('panier', []); // récupération du panier stocké dans la session sinon panier vide 
+        $panier[$id] = $quantite;
         if (!isset($panier['TVA'])) {
             $panier['TVA'] = 0.2;
         }
-        $this->session->set('panier', $panier);
+        $session->set('panier', $panier);
     }
 
-    // public function calcul total
-    public function calculSousTotal(ProduitsRepository $produitsRepository): float
+    public function calculSousTotal(ProduitsRepository $produitsRepository, $session): float
     {
-        $panier = $this->session->get('panier');
+        $panier = $session->get('panier');
         $sousTotal = 0.0;
         foreach ($panier as $produitId => $quantite) {
             $produit = $produitsRepository->find($produitId);
@@ -41,15 +32,15 @@ class PanierService
         return $sousTotal;
     }
 
-    public function calculTotal($sousTotal): float
+    public function calculTotal($sousTotal, $session): float
     {
-        $panier = $this->session->get('panier');
+        $panier = $session->get('panier');
         return $panier['TVA'] * $sousTotal;
     }
 
-    public function getContenuPanier(): array
+    public function getContenuPanier($session): array
     {
-        return $this->session->get('panier', []);
+        return $session->get('panier', []);
     }
 
 }

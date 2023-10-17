@@ -21,18 +21,26 @@
               <p>{{ produit.description }}</p>
               <h5>Prix:</h5>
               <p>{{ produit.prix }}$</p>
-            </div>
-            {# {{dump(form.taille.vars.value)}} #}
-            <div class="form-group">
-                {{ form_label(form.taille, 'Taille', {'label_attr': {'class': 'custom-label'}}) }}
-                {{ form_widget(form.taille, {'id': 'tailleSelect', 'attr': {'class': 'custom-input', 'style': 'border:none;text-align:left;'}}) }}
-                {{ form_row(form.selectedSize, {'attr': {'style': 'display: none;'}}) }}
+              <h5>Quantite Magasins: </h5>
+              {% for key, value in ArticlesMagasins %}
+                  <select id="menuDeroulant">
+                  <option value="defaultValue" selected>Cliquez pour voir la liste</option>
+                  {% for key, value in ArticlesMagasins %}
+                    <optgroup label="{{ key }}" disabled>
+                      <option value="{{ value }}" disabled>Quantite: {{ value }}</option>
+                    </optgroup>
+                  {% endfor %}
+                </select>
 
+              {% endfor %}
             </div>
             <div class="form-group">
               {{ form_label(form.quantite, 'Quantite', {'label_attr': {'class': 'custom-label'}}) }}
-              {# Il faut adapter le max avec le nb d'articles avec la taille selectionnée en bdd #}
-              {{ form_widget(form.quantite, {'attr': {'id': 'quantite', 'class': 'custom-input', 'style': 'border:none;text-align:left;', 'min': 0, 'max': 100}}) }}
+              {# Il faut adapter le max avec le nb d'articles avec la taille selectionnée en bdd #}  
+              {{ form_widget(form.quantite, {'attr': {'id': 'quantite', 'class': 'custom-input', 'style': 'border:none;text-align:left;', 'min': 1, 'max': maxQuantite }}) }}
+              {% if maxQuantite < 30 %}
+                <p style="color: red">Vite il reste plus que {{ maxQuantite }} articles !</p>
+              {% endif %} 
             </div>
             {{ form_widget(form.add, {'attr': {'readonly': 'readonly', 'class': 'btn btn-success custom-button', 'style': 'margin: 20px auto 0 auto; display: block; width: fit-content;'}}) }}
             {{ form_end(form) }}
@@ -82,29 +90,6 @@
   background-color: darkgreen; /* Couleur de fond au survol du bouton */
 }
 </style>
-
-
-
-<script>
-    // Attendez que le DOM soit prêt
-    document.addEventListener('DOMContentLoaded', function() {
-        // Sélectionnez le champ de sélection de taille par son ID
-        var tailleSelect = document.getElementById('tailleSelect');
-        var selectedSizeField = document.getElementById('selectedSizeField');
-
-        // Ajoutez un gestionnaire d'événement pour le changement de valeur
-        tailleSelect.addEventListener('change', function() {
-            // Récupérez la valeur sélectionnée
-            var selectedSize = tailleSelect.value;
-            
-            // Mettez à jour la valeur du champ de formulaire caché
-            selectedSizeField.value = selectedSize;
-
-            // Affichez la valeur dans la console (facultatif)
-            console.log(selectedSize);
-        });
-    });
-</script>
 
 
 {% endblock %}

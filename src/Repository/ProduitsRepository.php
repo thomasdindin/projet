@@ -23,13 +23,13 @@ class ProduitsRepository extends ServiceEntityRepository
 
 
 
-    public function taillesDisponible(): array
-    {
-        return $this->createQueryBuilder('p')
-            ->select('DISTINCT(p.taille)') //retourne un tableau associatif
-            ->getQuery()
-            ->getResult();
-    }
+    // public function taillesDisponible(): array
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->select('DISTINCT(p.taille)') //retourne un tableau associatif
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 
 
     //    public function findOneBySomeField($value): ?Produits

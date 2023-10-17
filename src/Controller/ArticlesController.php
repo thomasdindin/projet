@@ -7,6 +7,7 @@ use App\Form\ArticleType;
 use App\Repository\ProduitsRepository;
 use App\Repository\RayonRepository;
 use App\Services\PanierService;
+use App\Services\ProduitService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,39 +25,40 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-
     #[Route('/article/{id}', name: 'article_details')]
-    public function details(Produits $produit, ProduitsRepository $produitsRepository, Request $request): Response
+    public function details(Produits $produit, int $id, ProduitsRepository $produitsRepository, Request $request, PanierService $panierService, ProduitService $produitService): Response
     {
-        $taillesDispo = $produitsRepository->taillesDisponible();
-        // on crée un tableau contenant les tailles disponible comme ca on a pas de double tableau
-        foreach ($taillesDispo as $tabTaille) {
-            foreach ($tabTaille as $taille) {
-                $tableauDesTailles[$taille] = $taille;
-            }
-        }
+        // $produitDansEntrepot = $produit->getExistes(); //tableau associatif
+        $quantiteDansEntrepot = $produitService->quantiteEntrepot($produit);
+        // foreach ($produitDansEntrepot as $existe) {
+        //     $quantiteDansEntrepot += $existe->getQuantite();
+        // }
 
-        $form = $this->createForm(ArticleType::class, [], [
-            'taillesDispo' => $tableauDesTailles,
-        ]);
+        $nbArticlesMagasin = $produitService->produitMagasins($produit); //tableau associatif
+        // foreach ($produitDansMagasin as $stock) {
+        //     $magasin = $stock->getFkMagasinId();
+        //     $adresse = $magasin->getAdresse() . ' ' . $magasin->getVille() . ' ' . $magasin->getCodePostal();
+        //     $nbArticlesMagasin[$adresse] = $stock->getQuantite();
+        // }
+
+        $form = $this->createForm(ArticleType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $taille = $data['taille'];
-            var_dump($taille);
             $quantite = $data['quantite'];
-            var_dump($quantite);
-            // $panierService->ajoutProduit($produit);
-            // return $this->redirectToRoute('', [], Response::HTTP_SEE_OTHER);
+            $session = $request->getSession();
+            $panierService->ajoutProduit($id, $quantite, $session);
+            return $this->redirectToRoute('app_panier');
         }
 
 
         return $this->render('articles/details.html.twig', [
 
             'form' => $form,
-            'tailles_dispo' => $produitsRepository->taillesDisponible(),
             'produit' => $produit,
+            'maxQuantite' => $quantiteDansEntrepot,
+            'ArticlesMagasins' => $nbArticlesMagasin,
         ]);
     }
 

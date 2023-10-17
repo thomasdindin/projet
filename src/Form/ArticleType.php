@@ -15,26 +15,13 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('taille', ChoiceType::class, [
-                'choices' => $options['taillesDispo'],
-                'label' => 'Taille',
-                'attr' => [
-                    'class' => 'custom-input',
-
-                    'style' => 'border:none;text-align:left;',
-                    // Appliquer un style personnalisé au champ de sélection
-                ],
-            ])
             ->add('quantite', IntegerType::class, ['label' => 'Quantité'])
-            ->add('add', SubmitType::class, ['label' => 'Ajout Panier'])
-            ->add('selectedSize', HiddenType::class);
+            ->add('add', SubmitType::class, ['label' => 'Ajout Panier']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-
-            'taillesDispo' => [],
         ]);
     }
 }
