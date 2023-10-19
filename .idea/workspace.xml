@@ -4,24 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="0fd5b797-7ab3-41ee-8839-7a4cbaf775a4" name="Changes" comment="" />
+=======
     <list default="true" id="39795e69-cb65-4423-891e-3678be27ba8c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/profil/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profil/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
+=======
   <component name="ComposerSettings">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
+        <entry key="$PROJECT_DIR$" value="maxence" />
+=======
         <entry key="$PROJECT_DIR$" value="master" />
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -159,16 +175,40 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+<<<<<<< HEAD
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2VIPlPu7D842UoomZXzhibgptrh" />
+=======
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
     </include_path>
   </component>
   <component name="ProjectId" id="2VyFJSXNQbdpKPS5ooeA7nJKEei" />
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/maxim/projet",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -189,6 +229,7 @@
       <recent name="C:\Users\maxim\PhpstormProjects\projet\public\images" />
     </key>
   </component>
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -198,6 +239,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="0fd5b797-7ab3-41ee-8839-7a4cbaf775a4" name="Changes" comment="" />
+      <created>1694520772115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694520772115</updated>
+      <workItem from="1694520773406" duration="4582000" />
+      <workItem from="1694689893157" duration="107000" />
+      <workItem from="1695121931247" duration="1287000" />
+      <workItem from="1695123504066" duration="7447000" />
+      <workItem from="1695133968486" duration="535000" />
+      <workItem from="1695134535292" duration="1063000" />
+      <workItem from="1695726639935" duration="3140000" />
+      <workItem from="1695730789055" duration="544000" />
+=======
       <changelist id="39795e69-cb65-4423-891e-3678be27ba8c" name="Changes" comment="" />
       <created>1695800349322</created>
       <option name="number" value="Default" />
@@ -212,12 +268,15 @@
       <workItem from="1696936575830" duration="1574000" />
       <workItem from="1697104122647" duration="1307000" />
       <workItem from="1697108956857" duration="6927000" />
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -229,4 +288,5 @@
       </map>
     </option>
   </component>
+>>>>>>> 47eb33863882afdf1c4576b310e7d430dfb96a16
 </project>
