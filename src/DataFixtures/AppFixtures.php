@@ -39,40 +39,42 @@ class AppFixtures extends Fixture
         }
         $manager->flush();
 
-        // Création entrepots produits magasins stocker et existe
+        // Création des entrepôts
         for ($i = 1; $i <= 3; $i++) {
             $entrepot = new Entrepot();
-            $existe = new Existe();
-            $magasin = new Magasin();
-            $stocker = new Stocker();
-            $magasin->setAdresse("Adresse du magasin {$i}");
-            $magasin->setVille("VilleM{$i}");
-            $magasin->setCodePostal(rand(10000, 99999));
-            $entrepot->setAdresse("Adresse de l'entrepot {$i}");
-            $entrepot->setVille("Ville{$i}");
+            $entrepot->setAdresse("Adresse de l'entrepôt $i");
+            $entrepot->setVille("Ville $i");
             $entrepot->setCodePostal(rand(10000, 99999));
             $manager->persist($entrepot);
-            $manager->persist($magasin);
-            for ($x = 1; $x <= 200; $x++) {
-                $produit = new Produits();
-                $produit->setNom("Produit $x");
-                $produit->setPrix(rand(10, 100));
-                $produit->setDescription("Description du produit $x");
-                $produit->setRayonId($this->getReference('rayon-' . rand(0, count($rayons) - 1))); // Utiliser une référence pour définir la relation
+            $this->addReference('entrepot-' . $i, $entrepot); // Ajoutez une référence pour chaque entrepôt créé
+        }
+
+        // Création des produits
+        for ($x = 1; $x <= 500; $x++) {
+            $produit = new Produits();
+            $produit->setNom("Produit $x");
+            $produit->setPrix(rand(10, 100));
+            $produit->setDescription("Description du produit $x");
+            $produit->setRayonId($this->getReference('rayon-' . rand(0, count($rayons) - 1))); // Utilisez une référence pour définir la relation
+            $manager->persist($produit);
+
+            // Créez des relations Produit-Entrepot avec une quantité aléatoire
+            for ($i = 1; $i <= rand(1, 3); $i++) { // Vous pouvez ajuster la plage du nombre d'entrepôts
+                $entrepot = $this->getReference('entrepot-' . rand(1, 3)); // Utilisez une référence pour sélectionner un entrepôt existant
+                $quantite = rand(1, 10); // Vous pouvez ajuster la plage de quantité selon vos besoins
+
+                $existe = new Existe();
                 $existe->setFkEntrepotId($entrepot);
-                $existe->setQuantite(5);
                 $existe->setFkProduitId($produit);
-                $stocker->setFkProduitId($produit);
-                $stocker->setQuantite(4);
-                $stocker->setFkMagasinId($magasin);
-                $manager->persist($produit);
-                $manager->persist($stocker);
+                $existe->setQuantite($quantite);
                 $manager->persist($existe);
             }
         }
+
         $manager->flush();
 
 
 
+        $manager->flush();
     }
 }
