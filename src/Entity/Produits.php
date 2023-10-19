@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
@@ -13,27 +15,38 @@ class Produits
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    // #[ORM\Column(length: 10)]
+    // private ?string $taille = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $description = null;
+    private ?string $nom = null;
 
     #[ORM\Column]
     private ?float $prix = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    private ?string $description = null;
 
-    #[ORM\Column(length: 20)]
-    private ?string $taille = null;
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Rayon $rayon = null;
 
-    #[ORM\ManyToOne(inversedBy: 'fk_id_produits')]
-    private ?Contient $contient = null;
+    #[ORM\OneToMany(mappedBy: 'fkProduit', targetEntity: Stocker::class)]
+    private Collection $stockers;
 
-    #[ORM\ManyToOne(inversedBy: 'fk_id_produits')]
-    private ?Stocke $stocke = null;
+    #[ORM\OneToMany(mappedBy: 'fkProduit', targetEntity: Contenir::class)]
+    private Collection $contenirs;
 
+    #[ORM\OneToMany(mappedBy: 'fkProduit', targetEntity: Existe::class)]
+    private Collection $existes;
+
+
+    public function __construct()
+    {
+        $this->stockers = new ArrayCollection();
+        $this->contenirs = new ArrayCollection();
+        $this->existes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,17 +65,17 @@ class Produits
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
+    // public function getTaille(): ?string
+    // {
+    //     return $this->taille;
+    // }
 
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
+    // public function setTaille(string $taille): static
+    // {
+    //     $this->taille = $taille;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPrix(): ?float
     {
@@ -76,50 +89,116 @@ class Produits
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getDescription(): ?string
     {
-        return $this->image;
+        return $this->description;
     }
 
-    public function setImage(string $image): static
+    public function setDescription(string $description): static
     {
-        $this->image = $image;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getTaille(): ?string
+    public function getRayonId(): ?Rayon
     {
-        return $this->taille;
+        return $this->rayon;
     }
 
-    public function setTaille(string $taille): static
+    public function setRayonId(?Rayon $rayon): static
     {
-        $this->taille = $taille;
+        $this->rayon = $rayon;
 
         return $this;
     }
 
-    public function getContient(): ?Contient
+    /**
+     * @return Collection<int, Stocker>
+     */
+    public function getStockers(): Collection
     {
-        return $this->contient;
+        return $this->stockers;
     }
 
-    public function setContient(?Contient $contient): static
+    public function addStocker(Stocker $stocker): static
     {
-        $this->contient = $contient;
+        if (!$this->stockers->contains($stocker)) {
+            $this->stockers->add($stocker);
+            $stocker->setFkProduitId($this);
+        }
 
         return $this;
     }
 
-    public function getStocke(): ?Stocke
+    public function removeStocker(Stocker $stocker): static
     {
-        return $this->stocke;
+        if ($this->stockers->removeElement($stocker)) {
+            // set the owning side to null (unless already changed)
+            if ($stocker->getFkProduitId() === $this) {
+                $stocker->setFkProduitId(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setStocke(?Stocke $stocke): static
+    /**
+     * @return Collection<int, Contenir>
+     */
+    public function getContenirs(): Collection
     {
-        $this->stocke = $stocke;
+        return $this->contenirs;
+    }
+
+    public function addContenir(Contenir $contenir): static
+    {
+        if (!$this->contenirs->contains($contenir)) {
+            $this->contenirs->add($contenir);
+            $contenir->setFkProduitId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContenir(Contenir $contenir): static
+    {
+        if ($this->contenirs->removeElement($contenir)) {
+            // set the owning side to null (unless already changed)
+            if ($contenir->getFkProduitId() === $this) {
+                $contenir->setFkProduitId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Existe>
+     */
+    public function getExistes(): Collection
+    {
+        return $this->existes;
+    }
+
+    public function addExiste(Existe $existe): static
+    {
+        if (!$this->existes->contains($existe)) {
+            $this->existes->add($existe);
+            $existe->setFkProduitId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExiste(Existe $existe): static
+    {
+        if ($this->existes->removeElement($existe)) {
+            // set the owning side to null (unless already changed)
+            if ($existe->getFkProduitId() === $this) {
+                $existe->setFkProduitId(null);
+            }
+        }
 
         return $this;
     }

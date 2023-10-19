@@ -11,10 +11,13 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/thoma/OneDrive/Bureau/projet/src/Controller/ArticlesController.php'|file_link(0) }}">src/Controller/ArticlesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/thoma/OneDrive/Bureau/projet/templates/articles/index.html.twig'|file_link(0) }}">templates/articles/index.html.twig</a></code></li>
-    </ul>
+       {% for produit in produits %} 
+            <ul>
+                <li>{{produit.nom}}</li>
+                <li>{{produit.prix}}</li>
+            </ul>
+            <a path href="{{path('article_details', {'id' : produit.id})}}">Consulter l'article</a>
+        
+        {% endfor %}
 </div>
 {% endblock %}

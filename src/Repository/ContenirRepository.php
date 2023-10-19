@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Commandes;
+use App\Entity\Contenir;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Commandes>
+ * @extends ServiceEntityRepository<Contenir>
  *
- * @method Commandes|null find($id, $lockMode = null, $lockVersion = null)
- * @method Commandes|null findOneBy(array $criteria, array $orderBy = null)
- * @method Commandes[]    findAll()
- * @method Commandes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Contenir|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Contenir|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Contenir[]    findAll()
+ * @method Contenir[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CommandesRepository extends ServiceEntityRepository
+class ContenirRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Commandes::class);
+        parent::__construct($registry, Contenir::class);
     }
 
 //    /**
-//     * @return Commandes[] Returns an array of Commandes objects
+//     * @return Contenir[] Returns an array of Contenir objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class CommandesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Commandes
+//    public function findOneBySomeField($value): ?Contenir
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

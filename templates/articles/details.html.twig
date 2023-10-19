@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <!-- Colonne du carrousel (gauche) -->
+      <div class="col-md-7">
+        {% include 'partials/_carousel.html.twig' %}
+      </div>
+
+      <!-- Colonne du formulaire (droite) -->
+      <div class="col-md-5">
+        {{ form_start(form, {'attr': {'class': 'custom-form'}}) }}
+            <div class="product-info">
+              <h2>{{ produit.nom }}</h2><br>
+              <h5> Description: </h5>
+              <p>{{ produit.description }}</p>
+              <h5>Prix:</h5>
+              <p>{{ produit.prix }}$</p>
+              <h5>Quantite Magasins: </h5>
+              {% for key, value in ArticlesMagasins %}
+                  <select id="menuDeroulant">
+                  <option value="defaultValue" selected>Cliquez pour voir la liste</option>
+                  {% for key, value in ArticlesMagasins %}
+                    <optgroup label="{{ key }}" disabled>
+                      <option value="{{ value }}" disabled>Quantite: {{ value }}</option>
+                    </optgroup>
+                  {% endfor %}
+                </select>
+
+              {% endfor %}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.quantite, 'Quantite', {'label_attr': {'class': 'custom-label'}}) }}
+              {# Il faut adapter le max avec le nb d'articles avec la taille selectionnée en bdd #}  
+              {{ form_widget(form.quantite, {'attr': {'id': 'quantite', 'class': 'custom-input', 'style': 'border:none;text-align:left;', 'min': 1, 'max': maxQuantite }}) }}
+              {% if maxQuantite < 30 %}
+                <p style="color: red">Vite il reste plus que {{ maxQuantite }} articles !</p>
+              {% endif %} 
+            </div>
+            {{ form_widget(form.add, {'attr': {'readonly': 'readonly', 'class': 'btn btn-success custom-button', 'style': 'margin: 20px auto 0 auto; display: block; width: fit-content;'}}) }}
+            {{ form_end(form) }}
+        {% if form_errors(form) %}
+            <div class="alert alert-danger">
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+<style>
+.custom-form {
+  background-color: #f7f7f7; /* Couleur de fond du formulaire */
+  padding: 40px; /* Espacement autour du formulaire */
+  margin: 20px;
+  border: 1px solid #ccc; /* Bordure du formulaire */
+}
+
+.custom-label {
+  font-size: 18px; /* Taille de police des labels */
+  margin-bottom: 10px; /* Espacement entre les labels et les champs */
+  font-weight: bold; /* Gras pour les labels */
+}
+
+.custom-input {
+  font-size: 16px; /* Taille de police des champs */
+  padding: 10px; /* Espacement à l'intérieur des champs */
+  width: 100%; /* Largeur des champs */
+  border: 1px solid #ccc; /* Bordure des champs */
+  border-radius: 5px; /* Coins arrondis pour les champs */
+}
+
+.custom-button {
+  background-color: green; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  font-size: 18px; /* Taille de police du bouton */
+  padding: 10px 20px; /* Espacement à l'intérieur du bouton */
+  border: none; /* Pas de bordure pour le bouton */
+  border-radius: 5px; /* Coins arrondis pour le bouton */
+  cursor: pointer; /* Curseur pointeur pour le bouton */
+}
+
+.custom-button:hover {
+  background-color: darkgreen; /* Couleur de fond au survol du bouton */
+}
+</style>
+
+
+{% endblock %}

@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Stocke;
+use App\Entity\Stocker;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Stocke>
+ * @extends ServiceEntityRepository<Stocker>
  *
- * @method Stocke|null find($id, $lockMode = null, $lockVersion = null)
- * @method Stocke|null findOneBy(array $criteria, array $orderBy = null)
- * @method Stocke[]    findAll()
- * @method Stocke[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Stocker|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Stocker|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Stocker[]    findAll()
+ * @method Stocker[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class StockeRepository extends ServiceEntityRepository
+class StockerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Stocke::class);
+        parent::__construct($registry, Stocker::class);
     }
 
 //    /**
-//     * @return Stocke[] Returns an array of Stocke objects
+//     * @return Stocker[] Returns an array of Stocker objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class StockeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Stocke
+//    public function findOneBySomeField($value): ?Stocker
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')

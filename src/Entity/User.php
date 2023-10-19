@@ -6,10 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -35,7 +37,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 45)]
     private ?string $prenom = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkIdUser', targetEntity: Commandes::class)]
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $pays = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $codePostal = null;
+
+    #[ORM\OneToMany(mappedBy: 'fkUserId', targetEntity: Commande::class)]
     private Collection $commandes;
 
     public function __construct()
@@ -137,33 +152,87 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): static
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(?string $pays): static
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(?int $codePostal): static
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
     /**
-     * @return Collection<int, Commandes>
+     * @return Collection<int, Commande>
      */
     public function getCommandes(): Collection
     {
         return $this->commandes;
     }
 
-    public function addCommande(Commandes $commande): static
+    public function addCommande(Commande $commande): static
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes->add($commande);
-            $commande->setFkIdUser($this);
+            $commande->setFkUserId($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commandes $commande): static
+    public function removeCommande(Commande $commande): static
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getFkIdUser() === $this) {
-                $commande->setFkIdUser(null);
+            if ($commande->getFkUserId() === $this) {
+                $commande->setFkUserId(null);
             }
         }
 
         return $this;
+    }
+
+    public function findOneBy(array $array)
+    {
+        // TODO: Implement findOneBy() method.
     }
 }
