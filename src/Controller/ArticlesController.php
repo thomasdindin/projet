@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #[Route('/', name: 'app_articles')]
-    public function index(ProduitsRepository $produits, RayonRepository $rayons,  ProduitService $produitService): Response
+    public function index(ProduitsRepository $produits, RayonRepository $rayons, ProduitService $produitService): Response
     {
 
         $research = $_GET['research'] ?? null;
@@ -46,18 +46,10 @@ class ArticlesController extends AbstractController
     #[Route('/article/{id}', name: 'article_details')]
     public function details(Produits $produit, int $id, ProduitsRepository $produitsRepository, Request $request, PanierService $panierService, ProduitService $produitService): Response
     {
-        // $produitDansEntrepot = $produit->getExistes(); //tableau associatif
         $quantiteDansEntrepot = $produitService->quantiteEntrepot($produit);
-        // foreach ($produitDansEntrepot as $existe) {
-        //     $quantiteDansEntrepot += $existe->getQuantite();
-        // }
 
         $nbArticlesMagasin = $produitService->produitMagasins($produit); //tableau associatif
-        // foreach ($produitDansMagasin as $stock) {
-        //     $magasin = $stock->getFkMagasinId();
-        //     $adresse = $magasin->getAdresse() . ' ' . $magasin->getVille() . ' ' . $magasin->getCodePostal();
-        //     $nbArticlesMagasin[$adresse] = $stock->getQuantite();
-        // }
+
 
         $form = $this->createForm(ArticleType::class);
         $form->handleRequest($request);
@@ -66,7 +58,7 @@ class ArticlesController extends AbstractController
             $data = $form->getData();
             $quantite = $data['quantite'];
             $session = $request->getSession();
-            $panierService->ajoutProduit($id, $quantite, $session);
+            $panierService->ajoutProduit($id, $quantite, $session, $produit->getPrix(), $produit->getNom());
             return $this->redirectToRoute('app_panier');
         }
 

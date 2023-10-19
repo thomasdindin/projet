@@ -22,6 +22,9 @@
               <h5>Prix:</h5>
               <p>{{ produit.prix }}$</p>
               <h5>Quantite Magasins: </h5>
+              {% if ArticlesMagasins is empty %}
+                <p style="color: red">Victime de son succés cet article n'est plus disponible dans nos magasins !</p>
+              {% endif %}
               {% for key, value in ArticlesMagasins %}
                   <select id="menuDeroulant">
                   <option value="defaultValue" selected>Cliquez pour voir la liste</option>
@@ -37,8 +40,10 @@
             <div class="form-group">
               {{ form_label(form.quantite, 'Quantite', {'label_attr': {'class': 'custom-label'}}) }}
               {# Il faut adapter le max avec le nb d'articles avec la taille selectionnée en bdd #}  
-              {{ form_widget(form.quantite, {'attr': {'id': 'quantite', 'class': 'custom-input', 'style': 'border:none;text-align:left;', 'min': 1, 'max': maxQuantite }}) }}
-              {% if maxQuantite < 30 %}
+              {{ form_widget(form.quantite, {'attr': {'id': 'quantite', 'class': 'custom-input', 'style': 'border:none;text-align:left;', 'min': 0, 'max': maxQuantite }}) }}
+              {%  if maxQuantite == 0 %}
+                <p style="color: red">Victime de son succés cet article n'est plus disponible en ligne !</p>
+              {% elseif maxQuantite < 30 %}
                 <p style="color: red">Vite il reste plus que {{ maxQuantite }} articles !</p>
               {% endif %} 
             </div>

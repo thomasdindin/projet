@@ -12,10 +12,16 @@ use App\Entity\Magasin;
 use App\Entity\Existe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private UserPasswordHasherInterface $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        $this->hasher = $hasher;
+    }
     public function load(ObjectManager $manager)
     {
         $rayons = [
@@ -70,6 +76,13 @@ class AppFixtures extends Fixture
                 $manager->persist($existe);
             }
         }
+        $user = new User();
+        $user->setPrenom('Amanie');
+        $user->setNom("Said");
+        $user->setEmail('amanie@gmail.com');
+        $password = $this->hasher->hashPassword($user, '123');
+        $user->setPassword($password);
+        $manager->persist($user);
         $manager->flush();
 
 
