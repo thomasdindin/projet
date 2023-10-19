@@ -10,10 +10,14 @@ class PanierService
 {
     //fonction ajout produit au panier qui renvoie un objet de type produit et une quantité
 
-    public function ajoutProduit($id, $quantite, $session)
+    public function ajoutProduit($id, $quantite, $session, $prix, $nom)
     {
         $panier = $session->get('panier', []); // récupération du panier stocké dans la session sinon panier vide 
-        $panier[$id] = $quantite;
+        $panier[$id] = [
+            'prix' => $prix,
+            'quantite' => $quantite,
+            'nom' => $nom,
+        ];
         if (!isset($panier['TVA'])) {
             $panier['TVA'] = 0.2;
         }
