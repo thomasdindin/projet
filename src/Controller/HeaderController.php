@@ -13,8 +13,8 @@ class HeaderController extends AbstractController
     public function index(RayonRepository $rayonRepository): Response
     {
 
-        $rayons = $rayonRepository->findAll();
-        return $this->render('header/index.html.twig', [
+       $rayons = $rayonRepository->findAll();
+        return $this->render('partials/_header.html.twig', [
             'controller_name' => 'HeaderController',
             'rayons' => $rayons
         ]);

@@ -8,6 +8,7 @@ use App\Repository\ProduitsRepository;
 use App\Repository\RayonRepository;
 use App\Services\PanierService;
 use App\Services\ProduitService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticlesController extends AbstractController
 {
+
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     #[Route('/', name: 'app_articles')]
     public function index(ProduitsRepository $produits, RayonRepository $rayons, ProduitService $produitService): Response
     {
@@ -28,18 +37,14 @@ class ArticlesController extends AbstractController
             $categories = $rayons->findByResearch($research);
         }
 
-        $articles_qte = []; // Tableau associatif
-
-        foreach ($articles as $art) {
-            $quantite = $produitService->quantiteEntrepot($art);
-            $articles_qte[$art->getId()] = $quantite;
-        }
+        $articles_qte = $produitService->getAllQteEntrepot($this -> entityManager);
 
         return $this->render('articles/articles.html.twig', [
             'controller_name' => 'Tous les articles',
             'produits' => $articles,
             'rayons' => $categories,
             'articles_qte' => $articles_qte
+
         ]);
     }
 
