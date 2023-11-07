@@ -24,6 +24,7 @@ class PanierService
         $session->set('panier', $panier);
     }
 
+
     public function calculSousTotal(ProduitsRepository $produitsRepository, $session): float
     {
         $panier = $session->get('panier');
