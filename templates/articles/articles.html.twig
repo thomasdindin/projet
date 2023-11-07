@@ -6,7 +6,6 @@
 
 {% block body %}
 
-
 	<style>
 		.small {
 			height: 40px; /* Définir la hauteur en pixels */
@@ -69,7 +68,7 @@
 
 										<div class="d-flex justify-content-between mb-2">
 											<p class="text-error mb-0 text-center w-100">Plus que
-												<span class="fw-bold">{{articles_qte[produit.id]}}</span>
+												<span>{{articles_qte[produit.id]}}</span>
 												articles en stock !
 											</p>
 										</div>
@@ -82,4 +81,6 @@
 			</div>
 		</section>
 	{% endfor %}
+
+
 {% endblock %}

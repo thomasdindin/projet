@@ -1,55 +1,71 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-danger">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
+<nav
+	class="navbar navbar-expand-lg bg-danger">
+	<!-- Container wrapper -->
+	<div
+		class="container-fluid">
 
-        <!-- Navbar brand -->
-        <a class="navbar-brand" href="{{ path('app_articles') }}">
-            <img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="50px">
-        </a>
+		<!-- Navbar brand -->
+		<a class="navbar-brand" href="{{ path('app_articles') }}">
+			<img src="{{ asset('images/logov2.png') }}" alt="Le logo de ALL4SPORT" srcset="" height="75px">
+		</a>
 
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+		<!-- Toggle button -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<i class="fas fa-bars"></i>
+		</button>
 
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <!-- Empty div for pushing the buttons to the right -->
-            <div class="ms-auto"></div>
+			<div class="dropdown">
+				<a class="dropdown-toggle text-dark text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+					Rayons
+				</a>
 
-            <!-- Icons -->
-            <ul class="navbar-nav d-flex flex-row me-1">
-                <li class="nav-item me-3 me-lg-0">
-                    <a href="{{ path('app_panier') }}" class="nav-link d-flex flex-row align-items-center">
-                        Panier
-                        <div class="p-1"></div>
-                        <i class="bi bi-bag-fill"></i>
-                    </a>
-                </li>
-                {% if is_granted('ROLE_USER') %}
-                <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link d-flex flex-row flex-wrap" href="{{ path('app_profil') }}">
-                        Profil
-                        <div class="p-1"></div>
-                        <i class="bi bi-person-circle"></i>
-                    </a>
-                </li>
-                {% else %}
-                <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link d-flex flex-row align-items-center" href="{{path('app_login')}}">
-                        Connexion
-                        <div class="p-1"></div>
-                        <i class="bi bi-box-arrow-in-right"></i>
-                    </a>
-                </li>
-                {% endif %}
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					{% for rayon in rayons %}
+					<li class="dropdown-item">
+						<a class="nav-link" href="{{path('app_categorie', {'id': rayon.id})}}">{{ rayon.nom }}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
 
-            </ul>
-        </div>
-    </div>
-    <!-- Container wrapper -->
+
+			<!-- Empty div for pushing the buttons to the right -->
+			<div class="ms-auto"></div>
+
+			<!-- Icons -->
+			<ul class="navbar-nav d-flex flex-row me-1">
+				<li class="nav-item me-3 me-lg-0">
+					<a href="{{ path('app_panier') }}" class="nav-link d-flex flex-row align-items-center">
+						Panier
+						<div class="p-1"></div>
+						<i class="bi bi-bag-fill"></i>
+					</a>
+				</li>
+				{% if is_granted('ROLE_USER') %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link d-flex flex-row flex-wrap" href="{{ path('app_profil') }}">
+							Profil
+							<div class="p-1"></div>
+							<i class="bi bi-person-circle"></i>
+						</a>
+					</li>
+				{% else %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link d-flex flex-row align-items-center" href="{{path('app_login')}}">
+							Connexion
+							<div class="p-1"></div>
+							<i class="bi bi-box-arrow-in-right"></i>
+						</a>
+					</li>
+				{% endif %}
+
+			</ul>
+		</div>
+	</div>
+	<!-- Container wrapper -->
 </nav>
 <!-- Navbar -->

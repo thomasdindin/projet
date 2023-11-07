@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{rayon.nom}}
+	{{rayonSelected.nom}}
 {% endblock %}
 
 {% block body %}
@@ -146,7 +146,8 @@
 									{{cat}},
 								{% endfor %}
 
-								<p id="count-selected-items">({{inRange | length}})</p></h2>
+								<p id="count-selected-items">({{inRange | length}})</p>
+							</h2>
 						</div>
 						<hr class="hr">
 					</div>
@@ -166,8 +167,8 @@
 											</p>
 
 											<div class="d-flex justify-content-between mb-2">
-												<p class="text-error mb-0 text-center">Plus que
-													<span class="fw-bold">6</span>
+												<p class="text-error mb-0 text-center w-100">Plus que
+													<span>{{articles_qte[produit.id]}}</span>
 													articles en stock !
 												</p>
 											</div>
@@ -183,30 +184,30 @@
 	</section>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#search-input').on('input', function () {
-            var query = $(this).val().toLowerCase();
+	<script>
+		$(document).ready(function () {
+$('#search-input').on('input', function () {
+var query = $(this).val().toLowerCase();
 
-            // Parcourez chaque élément de la liste d'articles
-            $('.col-lg-3.col-md-6').each(function () {
-                var productName = $(this).find('.fw-bold').text().toLowerCase();
+// Parcourez chaque élément de la liste d'articles
+$('.col-lg-3.col-md-6').each(function () {
+var productName = $(this).find('.fw-bold').text().toLowerCase();
 
-                // Vérifiez si le nom de l'article correspond à la recherche
-                if (productName.includes(query)) {
-                    $(this).removeClass('d-none'); // Affichez l'article
-                } else {
-                    $(this).addClass('d-none'); // Masquez l'article
-                }
-            });
+// Vérifiez si le nom de l'article correspond à la recherche
+if (productName.includes(query)) {
+$(this).removeClass('d-none'); // Affichez l'article
+} else {
+$(this).addClass('d-none'); // Masquez l'article
+}
+});
 
-			// Comptez le nombre d'éléments visibles
-            var countVisibleItems = $('.col-lg-3.col-md-6:not(.d-none)').length;
+// Comptez le nombre d'éléments visibles
+var countVisibleItems = $('.col-lg-3.col-md-6:not(.d-none)').length;
 
-            // Affichez le nombre d'éléments sélectionnés où vous le souhaitez sur la page
-            let countSelectedItems = document.querySelector('#count-selected-items');
-			countSelectedItems.innerHTML = '(' + countVisibleItems + ')';
-        });
-    });
-</script>
+// Affichez le nombre d'éléments sélectionnés où vous le souhaitez sur la page
+let countSelectedItems = document.querySelector('#count-selected-items');
+countSelectedItems.innerHTML = '(' + countVisibleItems + ')';
+});
+});
+	</script>
 {% endblock %}
