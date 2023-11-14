@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<h1>{{produit.nom}}</h1>
+
+<p>{{produit.description}}</p>
+
+<p>{{produit.prix}} €</p>
+
+<h2>Stockage</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Quantité</th>
+            <th scope="col">Emplacement</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entrepot in entrepots %}
+            <tr>
+                <td>{{ entrepot.quantite }}</td>
+                <td>{{ entrepot.ville }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

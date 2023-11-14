@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LogistiqueController!
+{% endblock %}
+
+{% block body %}
+	<h1>Gestion de la logistique</h1>
+	<ul class="list-unstyled">
+		{% for entrepot in entrepots %}
+			<li>
+				<a href="{{path('app_logistique_entrepot', {id: entrepot.id})}}" class="text-decoration-none">
+				<div class="card shadow w-90 m-2 p-2">
+					<div class="card-body">
+						<h5 class="text-center fw-bold">{{ entrepot.adresse}}
+							{{entrepot.ville}}</h5>
+					</div>
+				</div>
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
