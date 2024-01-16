@@ -23,7 +23,11 @@ class PanierService
         $session->set('panier', $panier);
     }
 
-
+    /**
+     * @param ProduitsRepository $produitsRepository
+     * @param $session
+     * @return float
+     */
     public function calculSousTotal(ProduitsRepository $produitsRepository, $session): float
     {
         $panier = $session->get('panier');
@@ -36,6 +40,11 @@ class PanierService
         return $sousTotal;
     }
 
+    /**
+     * @param $sousTotal
+     * @param $session  
+     * @return float
+     */
     public function calculTotal($sousTotal, $session): float
     {
         $panier = $session->get('panier');

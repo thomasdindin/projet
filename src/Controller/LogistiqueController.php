@@ -12,6 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LogistiqueController extends AbstractController
 {
+    /**
+     * Affiche les entrepots
+     * @Route("/logistique", name="logistique")
+     * @param EntrepotRepository $entrepotRepository : repository pour les entrepots
+     * @return Response
+     */
     #[Route('/logistique', name: 'app_logistique')]
     public function index(EntrepotRepository $entrepotRepository): Response
     {
@@ -20,11 +26,22 @@ class LogistiqueController extends AbstractController
             'entrepots'=>$entrepotRepository->findAll()
         ]);
     }
+
+    /**
+     * Affiche les produits d'un entrepot
+     * @Route("/logistique/entrepot_{id}", name="logistique_entrepot")
+     * @param int $id id de l'entrepot
+     * @param ExisteRepository $existeRepository : repository pour les existes
+     * @param EntrepotRepository $entrepotRepository : repository pour les entrepots
+     * @return Response
+     */
     #[Route('/logistique/entrepot_{id}', name: 'app_logistique_entrepot')]
     public function show(int $id, ExisteRepository $existeRepository, EntrepotRepository $entrepotRepository): Response
     {
         
         $queryBuilder = $existeRepository->createQueryBuilder('e');
+
+        // On récupère la quantité dans un entrepot : 
         $queryBuilder->select('SUM(e.quantite) AS quantite')
         ->addSelect('p.nom')
         ->addSelect('p.prix')

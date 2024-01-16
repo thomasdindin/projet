@@ -25,6 +25,9 @@ class ProduitService
         return $quantiteDansEntrepot;
     }
 
+    /**
+     * Renvoie la qté de produit dans tous les magasins
+     */
     public function produitMagasins(Produits $produit): array
     {
 
