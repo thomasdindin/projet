@@ -74,6 +74,7 @@ symfony server:start
 > ```
 
 En cas de problème avec l'installation de Symfony, vous pouvez vous référer à la [documentation d'installation](https://symfony.com/doc/current/setup.html).
+
 En cas de problème avec l'installation de Node, vous pouvez vous référer à la [documentation d'installation](https://nodejs.org/en/download)
 
 
