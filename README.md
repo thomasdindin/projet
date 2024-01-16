@@ -10,6 +10,13 @@ Consulter l'avancement du projet :
 - [Sprint](https://docs.google.com/spreadsheets/d/1X8ZiPfPumHjeALstA8qJeBMtIhWIIcl2lHCaWqv1uPg/edit?usp=sharing)
 - [Backlog](https://docs.google.com/spreadsheets/d/1EfW7q80v_289lYrGj0lX8t0BOPR89cdcU7t_gQZQ6oo/edit?usp=sharing)
 
+# Séparation des tâches 
+
+- SAID Amanie : Communication avec le client, 
+- DINDIN Thomas : 
+- DROZDZ Maxence : Gestion du projet, page profil, connexion, inscription, Bdd mission 2
+- LECLERCQ Fednail :
+
 # Version 
 
 - Php : 8.2.0
@@ -49,6 +56,10 @@ Et charger les fixtures :
 > Note : les fixtures sont un jeu de données de test qui sert à prouver le bon fonctionnement de l'application. Dans le cadre d'une application réelle, il n'est pas obligé de les charger. 
 ```
 php bin/console doctrine:fixtures:load
+```
+```
+npm install
+npm run dev
 ```
 
 Enfin, vous pouvez lancer le serveur : 
