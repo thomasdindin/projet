@@ -20,7 +20,7 @@ class ProfilType extends AbstractType
             ->add('ville')
             ->add('codePostal')
             ->add('pays')
-            ->add('save', SubmitType::class, [
+            ->add('Sauvegarder', SubmitType::class, [
                 'attr' => ['class' => 'save'],
             ]);
 

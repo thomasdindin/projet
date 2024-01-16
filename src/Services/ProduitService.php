@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping\Entity;
 
 class ProduitService
 {
-
+    /**
+     * Renvoie la qté de produit dans tous les entrepots
+     * @param Produits $produit
+     * @return int
+     */
     public function quantiteEntrepot(Produits $produit): int
     {
         $produitDansEntrepot = $produit->getExistes(); //tableau associatif
@@ -18,6 +22,9 @@ class ProduitService
         return $quantiteDansEntrepot;
     }
 
+    /**
+     * Renvoie la qté de produit dans tous les magasins
+     */
     public function produitMagasins(Produits $produit): array
     {
 
@@ -31,6 +38,11 @@ class ProduitService
         return $nbArticlesMagasin;
     }
 
+    /**
+     * Renvoie la qté de produit dans tous les entrepots
+     * @param Produits $produit
+     * @return array
+     */
     public function getAllQteEntrepot(EntityManagerInterface $entityManager) {
         $qb = $entityManager->createQueryBuilder();
         $qb->select('IDENTITY(existe.fkProduit) as produitId', 'SUM(existe.quantite) as quantite')

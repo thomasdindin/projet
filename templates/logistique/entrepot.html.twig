@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
 	<h2>Entrepot</h2>
 	<hr>
 	<p>
@@ -20,68 +21,48 @@
 
 	<input type="text" id="search-input" class="form-control m-3" placeholder="Rechercher...">
 
-	<div class="container">
-		<div class="row m-2">
-			<div class="col">
-				<strong>Produit</strong>
-			</div>
-			<div class="col">
-				<strong>Prix</strong>
-			</div>
-			<div class="col">
-				<strong>Quantité</strong>
-			</div>
-			<div class="col">
-				<strong>Rangement</strong>
-			</div>
+	<table class="table table-striped">
+		<thead>
+			<th scope="col">Produit</th>
+			<th scope="col">Prix</th>
+			<th scope="col">Quantité</th>
+			<th scope="col">Rangement</th>
+		</thead>
 
-		</div>
+		<tbody>
+			{% for item in items %}
+				<tr class="entrepot-item">
+					<td>
+						<a href="{{path('app_logistique_produit', {idProduit: item.idProduit})}}" class="entrepot-item-nom">
+							{{item.nom}}
+						</a>
+					</td>
+					<td>{{item.prix}}</td>
+					<td>{{item.quantite}}</td>
+					<td>M2D2.5</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#search-input').on('input', function () {
+				var query = $(this).val().toLowerCase();
 
-		{% for item in items %}
-			<div class="row m-2 entrepot-item">
-				<div class="col entrepot-item-nom">
-				<a href="{{path('app_logistique_produit', {idProduit: item.idProduit})}}">
-					{{item.nom}}
-					</a>
-				</div>
-				<div class="col">
-					{{item.prix}}
-				</div>
-				<div class="col">
-					{{item.quantite}}
-				</div>
-				<div class="col">
-					M2D2.5
-				</div>
+				// Parcourez chaque élément de la liste d'articles
+				$('.entrepot-item').each(function () {
+					var productName = $(this).find('.entrepot-item-nom').text().toLowerCase();
 
-			</div>
-
-		{% endfor %}
-
-	</div>
-</ul>
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-	$(document).ready(function () {
-	$('#search-input').on('input', function () {
-	var query = $(this).val().toLowerCase();
-
-	// Parcourez chaque élément de la liste d'articles
-	$('.entrepot-item').each(function () {
-	var productName = $(this).find('.entrepot-item-nom').text().toLowerCase();
-
-	// Vérifiez si le nom de l'article correspond à la recherche
-	if (productName.includes(query)) {
-	$(this).removeClass('d-none'); // Affichez l'article
-	} else {
-	$(this).addClass('d-none'); // Masquez l'article
-	}
-	});
-	});
-	});
-</script>
-
+					// Vérifiez si le nom de l'article correspond à la recherche
+					if (productName.includes(query)) {
+						$(this).removeClass('d-none'); // Affichez l'article
+					} else {
+							$(this).addClass('d-none'); // Masquez l'article
+					}
+				});
+			});
+		});
+	</script>
 {% endblock %}

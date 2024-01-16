@@ -14,6 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class ArticlesController
+ * Responsable de l'affichage des articles sur la page d'accueil et de l'affichage unique
+ */
 class ArticlesController extends AbstractController
 {
 
@@ -25,13 +29,12 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/', name: 'app_articles')]
-    public function index(ProduitsRepository $produits, RayonRepository $rayons, ProduitService $produitService): Response
-    {
-
+    public function index(ProduitsRepository $produits, RayonRepository $rayons, ProduitService $produitService): Response{
         $research = $_GET['research'] ?? null;
         $articles = $produits->findAll();
         $categories = $rayons->findAll();
 
+        
         if ($research) {
             $articles = $produits->findBy(['nom' => $research, 'description' => $research]);
             $categories = $rayons->findByResearch($research);

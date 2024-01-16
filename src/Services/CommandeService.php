@@ -9,6 +9,13 @@ use Doctrine\ORM\EntityManagerInterface;
 class CommandeService
 {
 
+    /**
+     * Enregistre la commande dans la base de données
+     * @param $session : la session de l'utilisateur
+     * @param PanierService $panierService : le service du panier
+     * @param EntityManagerInterface $manager : le manager de la base de données
+     * @return void
+     */
     public function EnregistrementCommande($session, PanierService $panierService, EntityManagerInterface $manager)
     {
         $panier = $panierService->getContenuPanier($session);
