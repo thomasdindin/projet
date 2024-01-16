@@ -85,4 +85,4 @@ Ce controller permet de consulter son profil
 ## RegistrationController
 Ce controller permet l'inscription d'un membre.
 
-Vous pouvez aussi consulter le workflow pour mieux comprendre le fonctionnement de l'application.
+Vous pouvez aussi consulter le [workflow de l'application](https://lucid.app/lucidchart/6e06ae30-7beb-4b9a-af9d-9da4e0d08af3/edit?viewport_loc=-601%2C345%2C2453%2C1037%2C0_0&invitationId=inv_8c7289d4-0f3a-4125-9a14-ce760f462cb9) pour mieux comprendre son fonctionnement.
