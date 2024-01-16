@@ -62,52 +62,15 @@
                 <div class="card  text-black rounded-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Details carte</h5>
+                      <h5 class="mb-0">Details commande</h5>
                       <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
                         class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
                     </div>
-
-                    <form class="mt-4">
-                    <label class="form-label" for="typeName">Nom sur la carte</label>
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          placeholder="Cardholder's Name" />
+                      <hr class="my-4">
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">Sous-total</p>
+                        <p class="mb-2">{{ totalPanierSansTVA }} $</p>
                       </div>
-                      
-                      <label class="form-label" for="typeName">Numéro de carte</label>
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                      </div>
-
-                      <div class="row mb-4">
-                        <div class="col-md-6">
-                          <label class="form-label" for="typeExp">Expiration</label>
-                          <div class="form-outline form-white">
-                            <input type="text" id="typeExp" class="form-control form-control-lg"
-                              placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-
-                          <div class="form-outline form-white">
-                            <label class="form-label" for="typeExp">CVV</label>
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            
-                          </div>
-                        </div>
-                      </div>
-
-                    </form>
-
-                    <hr class="my-4">
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Sous-total</p>
-                      <p class="mb-2">{{ totalPanierSansTVA }} $</p>
-                    </div>
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">TVA</p>
@@ -119,11 +82,35 @@
                       <p class="mb-2">{{ totalPanierSansTVA + totalPanierSansTVA * TVA  }} $</p>
                     </div>
 
-                    <button type="button" class="btn btn-info btn-block btn-lg">
-                      <div class="d-flex justify-content-between">
-                        <span><a href="{{path('commandes_en_cours')}}" class="text-body">Payer</a><i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
-                    </button>
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        <label class="form-label" for="{{ form.adresseLiv.vars.id }}">Adresse de Livraison:</label>
+                        {{ form_widget(form.adresseLiv, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="{{ form.codePostal.vars.id }}">Code Postal:</label>
+                        {{ form_widget(form.codePostal, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.villeLiv.vars.id }}">Ville de Livraison:</label>
+                                {{ form_widget(form.villeLiv, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                      {% if is_granted('ROLE_USER') %}
+                          {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                          {{ form_end(form) }} 
+                      {% else %}
+                        <a class="nav-link d-flex flex-row align-items-center" href="{{path('app_login')}}">
+                          Connexion
+                        </a>
+                      {% endif %}
+                    
+                    
 
                   </div>
                 </div>

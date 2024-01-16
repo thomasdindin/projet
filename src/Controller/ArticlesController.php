@@ -37,7 +37,7 @@ class ArticlesController extends AbstractController
             $categories = $rayons->findByResearch($research);
         }
 
-        $articles_qte = $produitService->getAllQteEntrepot($this -> entityManager);
+        $articles_qte = $produitService->getAllQteEntrepot($this->entityManager);
 
         return $this->render('articles/articles.html.twig', [
             'controller_name' => 'Tous les articles',

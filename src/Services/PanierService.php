@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use App\Entity\Produits;
 use App\Repository\ProduitsRepository;
 
 class PanierService
 {
     //fonction ajout produit au panier qui renvoie un objet de type produit et une quantité
-
+    //idée pour la gestion de l'entrepot count dans existes jusqu'a ce que le nb d'article = quantité ensuite récupérer l'id des entrepots
     public function ajoutProduit($id, $quantite, $session, $prix, $nom)
     {
+        //je voudrai stocker dasn la session l'objet produit
         $panier = $session->get('panier', []); // récupération du panier stocké dans la session sinon panier vide 
         $panier[$id] = [
             'prix' => $prix,
