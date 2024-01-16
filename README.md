@@ -6,6 +6,10 @@ Bienvenue sur le projet AP 3 **All 4 Sport** du groupe composé de :
 - DINDIN Thomas (Développeur)
 - LECLERCQ Fednail (?)
 
+Consulter l'avancement du projet : 
+- [Sprint](https://docs.google.com/spreadsheets/d/1X8ZiPfPumHjeALstA8qJeBMtIhWIIcl2lHCaWqv1uPg/edit?usp=sharing)
+- [Backlog](https://docs.google.com/spreadsheets/d/1EfW7q80v_289lYrGj0lX8t0BOPR89cdcU7t_gQZQ6oo/edit?usp=sharing)
+
 # Installation 
 
 Une fois le projet téléchargé, tapez la commande :
