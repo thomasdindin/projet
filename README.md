@@ -1,9 +1,9 @@
 # All4Sport
 
 Bienvenue sur le projet AP 3 **All 4 Sport** du groupe composé de : 
-- SAID Amanie 
-- DINDIN Thomas
-- DROZDZ Maxence
+- SAID Amanie (Product Owner)
+- DROZDZ Maxence (Scrum Master)
+- DINDIN Thomas (Développeur)
 - LECLERCQ Fednail (?)
 
 # Installation 
