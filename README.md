@@ -30,6 +30,8 @@ Vers les informations de la base de donnée que vous voulez créer.
 Maintenant, on peut créer la base de données : 
 ```
 php bin/console doctrine:database:create
+php bin/console doctrine:make:migration
+php bin/console doctrine:migrations:migrate
 ```
 
 Et charger les fixtures : 
