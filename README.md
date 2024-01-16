@@ -57,6 +57,7 @@ Et charger les fixtures :
 ```
 php bin/console doctrine:fixtures:load
 ```
+Installer et démarrer le webpack node : 
 ```
 npm install
 npm run dev
