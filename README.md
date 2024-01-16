@@ -1,4 +1,4 @@
-# All4Sport
+ # All4Sport
 
 Bienvenue sur le projet AP 3 **All 4 Sport** du groupe composé de : 
 - SAID Amanie (Product Owner)
@@ -75,7 +75,7 @@ symfony server:start
 
 En cas de problème avec l'installation de Symfony, vous pouvez vous référer à la [documentation d'installation](https://symfony.com/doc/current/setup.html).
 
-En cas de problème avec l'installation de Node, vous pouvez vous référer à la [documentation d'installation](https://nodejs.org/en/download)
+En cas de problème avec l'installation de Node, vous pouvez vous référer à la [documentation d'installation](https://nodejs.org/en/download).
 
 
  # Fonctionnement 
