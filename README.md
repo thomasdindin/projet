@@ -10,6 +10,13 @@ Consulter l'avancement du projet :
 - [Sprint](https://docs.google.com/spreadsheets/d/1X8ZiPfPumHjeALstA8qJeBMtIhWIIcl2lHCaWqv1uPg/edit?usp=sharing)
 - [Backlog](https://docs.google.com/spreadsheets/d/1EfW7q80v_289lYrGj0lX8t0BOPR89cdcU7t_gQZQ6oo/edit?usp=sharing)
 
+# Version 
+
+- Php : 8.2.0
+- Symfony : 6.3.4
+- Bootstrap : v5.3
+- MySQL : 8.1.0&charset=utf8mb4 
+
 # Installation 
 
 Une fois le projet téléchargé, tapez la commande :
