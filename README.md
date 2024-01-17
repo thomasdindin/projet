@@ -12,7 +12,7 @@ Consulter l'avancement du projet :
 
 # Séparation des tâches 
 
-- SAID Amanie : Communication avec le client, 
+- SAID Amanie : Communication avec le client, panier & commandes (Vue, controller, repository, service), conception BDD
 - DINDIN Thomas : 
 - DROZDZ Maxence : Gestion du projet, page profil, connexion, inscription, Bdd mission 2
 - LECLERCQ Fednail :
