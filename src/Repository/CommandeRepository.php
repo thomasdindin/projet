@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Commande;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,7 +22,17 @@ class CommandeRepository extends ServiceEntityRepository
         parent::__construct($registry, Commande::class);
     }
 
-//    /**
+    /**
+     * Récupère les commandes liées à un utilisateur spécifique.
+     *
+     * @param User $user L'utilisateur pour lequel récupérer les commandes.
+     * @return Commande[] Un tableau d'objets Commande.
+     */
+    public function getCommandesByUser(User $user): array
+    {
+        return $this->findBy(['fkUser' => $user]);
+    }
+    //    /**
 //     * @return Commande[] Returns an array of Commande objects
 //     */
 //    public function findByExampleField($value): array
@@ -36,7 +47,7 @@ class CommandeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Commande
+    //    public function findOneBySomeField($value): ?Commande
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

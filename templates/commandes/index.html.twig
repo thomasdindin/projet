@@ -1,20 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommandesController!{% endblock %}
+{% block title %}Mes Commandes{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Vos styles personnalisés ici */
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .order-list { list-style: none; padding: 0; }
+        .order-item { margin-bottom: 20px; }
+        .product-details { margin-left: 20px; }
+        .total { font-weight: bold; }
+    </style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/saida/Desktop/projet/src/Controller/CommandesController.php'|file_link(0) }}">src/Controller/CommandesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/saida/Desktop/projet/templates/commandes/index.html.twig'|file_link(0) }}">templates/commandes/index.html.twig</a></code></li>
+    <h1>{{ controller_name }}! ✅</h1>
+    {# Commandes #}
+    <ul class="order-list">
+        {% for commande in commandes %}
+            <li class="order-item">
+                <strong>Commande du :</strong> {{ commande.dateCommande|date('d-m-Y H:i:s') }}
+                {% set sousTotal = 0 %}
+                {% set tva = 0 %}
+                <ul class="product-details">
+                    {% for contenu in contenus %}
+                        {% if contenu.fkCommandeId.id == commande.id %}
+                            <li>
+                                <strong>{{ contenu.fkProduitId.nom }}</strong> </br>
+                                <span>Quantité: {{ contenu.quantite }}</span> </br>
+                                <span>TVA: {{ contenu.tva }}</span> </br>
+                                <span>Prix unitaire: {{ contenu.prixUnitaire }}</span> </br>
+                                <span><mark>Etat de la commande: {{ commande.etat}}</mark></span> <br>
+                                <span>Sous-total: {{ sousTotal + (contenu.quantite * contenu.prixUnitaire) }}</span>
+                                {% set sousTotal = sousTotal + (contenu.quantite * contenu.prixUnitaire) %}
+                            </li>
+                        {% endif %}
+                        {% set tva = contenu.tva %}
+                    {% endfor %}
+                </ul>
+                
+                {# Le calcul du total est basé sur la TVA de chaque produit dans la commande #}
+                <div class="total">Total : {{ sousTotal + sousTotal * tva }}</div>
+            </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

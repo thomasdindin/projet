@@ -61,7 +61,6 @@ class ProduitService
 
     public function soustractionQntCommande(int $qnt, int $produitid): ?int
     {
-
         $qb = $this->entityManager->createQueryBuilder();
         $qb->select('IDENTITY(e.fkEntrepot) as entrepotId', 'SUM(e.quantite) as totalQuantite')
             ->from('App\Entity\Existe', 'e')
@@ -81,7 +80,6 @@ class ProduitService
 
             $up = $this->entityManager->createQueryBuilder();
             if ($quantiteDisponible >= $qnt) {
-
                 $up->update('App\Entity\Existe', 'e')
                     ->set('e.quantite', $quantiteDisponible - $qnt)
                     ->where('e.fkProduit = :produitid')
@@ -90,6 +88,7 @@ class ProduitService
                     ->setParameter('entrepotId', $entrepotId)
                     ->getQuery()
                     ->execute();
+                return $entrepotId;
             } else {
                 $up->update('App\Entity\Existe', 'e')
                     ->set('e.quantite', 0)
@@ -101,11 +100,8 @@ class ProduitService
                     ->execute();
                 $qnt -= $quantiteDisponible;
             }
-
-            return $entrepotId;
         }
 
-        return null;
     }
 
 

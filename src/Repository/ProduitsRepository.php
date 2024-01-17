@@ -23,6 +23,12 @@ class ProduitsRepository extends ServiceEntityRepository
 
 
 
+    public function getProduitById($produitId): ?Produits
+    {
+        return $this->find($produitId);
+    }
+
+
     // public function taillesDisponible(): array
     // {
     //     return $this->createQueryBuilder('p')

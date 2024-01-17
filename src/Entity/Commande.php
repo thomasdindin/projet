@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommandeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
@@ -34,9 +35,13 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'fkCommande', targetEntity: Contenir::class)]
     private Collection $contenirs;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateCommande = null;
+
     public function __construct()
     {
         $this->contenirs = new ArrayCollection();
+        $this->dateCommande = new \DateTime();
     }
 
     public function getId(): ?int
@@ -130,6 +135,18 @@ class Commande
                 $contenir->setFkCommandeId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateCommande(): ?\DateTimeInterface
+    {
+        return $this->dateCommande;
+    }
+
+    public function setDateCommande(\DateTimeInterface $dateCommande): static
+    {
+        $this->dateCommande = $dateCommande;
 
         return $this;
     }

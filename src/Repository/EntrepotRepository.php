@@ -21,7 +21,11 @@ class EntrepotRepository extends ServiceEntityRepository
         parent::__construct($registry, Entrepot::class);
     }
 
-//    /**
+    public function getEntrepotById($entrepotId): ?Entrepot
+    {
+        return $this->find($entrepotId);
+    }
+    //    /**
 //     * @return Entrepot[] Returns an array of Entrepot objects
 //     */
 //    public function findByExampleField($value): array
@@ -36,7 +40,7 @@ class EntrepotRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Entrepot
+    //    public function findOneBySomeField($value): ?Entrepot
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')

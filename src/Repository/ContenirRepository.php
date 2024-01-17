@@ -41,6 +41,16 @@ class ContenirRepository extends ServiceEntityRepository
         $entityManager->flush();
     }
 
+    /**
+     * Récupère le contenu d'une commande spécifique.
+     *
+     * @param Commande $commande La commande pour laquelle récupérer le contenu.
+     * @return Contenir[] Un tableau d'objets Contenir.
+     */
+    public function getContenuCommandes(Commande $commande): array
+    {
+        return $this->findBy(['fkCommande' => $commande]);
+    }
     //    /**
 //     * @return Contenir[] Returns an array of Contenir objects
 //     */

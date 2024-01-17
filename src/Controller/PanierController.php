@@ -6,6 +6,9 @@ use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Services\PanierService;
 use App\Services\ProduitService;
+use App\Repository\CommandeRepository;
+use App\Repository\EntrepotRepository;
+use App\Repository\ProduitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\ContenirRepository;
@@ -16,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierController extends AbstractController
 {
     #[Route('/panier', name: 'app_panier')]
-    public function index(PanierService $panierService, Request $request, EntityManagerInterface $em, ProduitService $produitService, ContenirRepository $contenirRepository): Response
+    public function index(PanierService $panierService, Request $request, EntityManagerInterface $em, ProduitService $produitService, ContenirRepository $contenirRepository, ProduitsRepository $produitRepository, CommandeRepository $commandeRepository, EntrepotRepository $entrepotRepository): Response
     {
         $session = $request->getSession();
         $panier = $panierService->getContenuPanier($session);
@@ -63,8 +66,16 @@ class PanierController extends AbstractController
                 $tva = $TVA;
                 $prixUnitaire = $val['prix'];
 
-                // ICI je devrais récupérer les 3 premiers objets à partir de leurs id
-                // $contenirRepository->addContenirRecords($fkProduitId, $fkCommandeId, $entrepotId, $quantite, $tva, $prixUnitaire);
+                $produit = $produitRepository->getProduitById($fkProduitId);
+                $entrepot = $entrepotRepository->getEntrepotById($entrepotId);
+
+                // Vérifiez si les objets sont valides avant d'ajouter les enregistrements
+                if ($produit && $commande && $entrepot) {
+                    $contenirRepository->addContenirRecords($produit, $commande, $entrepot, $quantite, $tva, $prixUnitaire);
+                } else {
+                    // Gérez le cas où l'un des objets n'est pas trouvé
+                    echo "Erreur : Impossible de trouver un ou plusieurs objets.";
+                }
             }
             return $this->redirectToRoute('app_commandes');
         }

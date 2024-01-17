@@ -49,7 +49,7 @@
 					<a href="{{ path('app_panier') }}" class="nav-link d-flex flex-row align-items-center">
 						Panier
 						<div class="p-1"></div>
-						<i class="bi bi-bag-fill"></i>
+						<i class="bi bi-cart4"></i>
 					</a>
 				</li>
 				{% if is_granted('ROLE_USER') %}
@@ -58,6 +58,13 @@
 							Profil
 							<div class="p-1"></div>
 							<i class="bi bi-person-circle"></i>
+						</a>
+					</li>
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link d-flex flex-row flex-wrap" href="{{ path('app_commandes') }}">
+							Mes commandes
+							<div class="p-1"></div>
+							<i class="bi bi-bag-fill"></i>
 						</a>
 					</li>
 				{% else %}
