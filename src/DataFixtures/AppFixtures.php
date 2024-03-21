@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
             $rayon = new Rayon();
             $rayon->setNom($rayonName);
             $manager->persist($rayon);
-            $this->addReference('rayon-' . $key, $rayon);
+            $this->addReference('rayon-' . $key, $rayon); //fait référence au rayon qui n'a pas forcément d'id donc n'a pas ete creer encore
         }
         $manager->flush();
 
@@ -84,8 +84,6 @@ class AppFixtures extends Fixture
         $user->setPassword($password);
         $manager->persist($user);
         $manager->flush();
-
-
 
         $manager->flush();
     }
