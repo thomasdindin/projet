@@ -29,18 +29,19 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/', name: 'app_articles')]
-    public function index(ProduitsRepository $produits, RayonRepository $rayons, ProduitService $produitService): Response{
+    public function index(ProduitsRepository $produits, RayonRepository $rayons, ProduitService $produitService): Response
+    {
         $research = $_GET['research'] ?? null;
         $articles = $produits->findAll();
         $categories = $rayons->findAll();
 
-        
+
         if ($research) {
             $articles = $produits->findBy(['nom' => $research, 'description' => $research]);
             $categories = $rayons->findByResearch($research);
         }
 
-        $articles_qte = $produitService->getAllQteEntrepot($this->entityManager);
+        $articles_qte = $produitService->getAllQteEntrepot();
 
         return $this->render('articles/articles.html.twig', [
             'controller_name' => 'Tous les articles',
