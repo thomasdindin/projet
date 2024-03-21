@@ -12,8 +12,10 @@ Consulter l'avancement du projet :
 
 # Séparation des tâches 
 
-- SAID Amanie : Communication avec le client, 
-- DINDIN Thomas : 
+- SAID Amanie : Communication avec le client, panier & commandes (Vue, controller, repository, service), conception BDD mission 1.
+
+  NB : Suite à une erreur de compte GitHub, j'ai effectué quelques commits avec un autre compte nommé "lecoinducellulaire".
+- DINDIN Thomas : pages d'accueil, affichage des article, header, filtres sur les articles et fonctions sql
 - DROZDZ Maxence : Gestion du projet, page profil, connexion, inscription, Bdd mission 2
 - LECLERCQ Fednail :
 
